@@ -20,22 +20,7 @@ class UserController extends Controller
 
     public function create()
     {
-        // Cek apakah user sedang mengakses route yang terdaftar di dalam grup middleware 'redirect.previous'
-        $isActive = Route::currentRouteName() == 'home-page.index' || 
-                    Route::currentRouteName() == 'blog.index' || 
-                    Route::currentRouteName() == 'cart.index' || 
-                    Route::currentRouteName() == 'category.index' || 
-                    Route::currentRouteName() == 'checkout.index' || 
-                    Route::currentRouteName() == 'contact.index' || 
-                    Route::currentRouteName() == 'elements.index' || 
-                    Route::currentRouteName() == 'single-blog.index' || 
-                    Route::currentRouteName() == 'single-product.index' || 
-                    Route::currentRouteName() == 'tracking.index';
-
-        // Set status berdasarkan hasil pengecekan di atas
-        $status = $isActive ? 1 : 0;
-
-        return view('admin.user.create', compact('status'));
+               return view('admin.user.create');
     }
 
 

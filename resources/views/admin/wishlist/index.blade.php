@@ -62,7 +62,7 @@
                             document.write(new Date().getFullYear())
                         </script>,
                         made with <i class="fa fa-heart"></i> by
-                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Orang Ganteng</a>
+                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Nesya Mulia</a>
                         for a better web.
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Delete'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Jika pengguna mengklik 'Yes', submit form untuk menghapus data

@@ -86,9 +86,9 @@
                     <label for="aktif" class="form-label">Status</label>
                     <div class="border-contrast p-1 rounded"> 
                     <select class="form-control border-0" id="aktif" name="aktif" aria-label="Aktif">
-    <option value="1" {{ $status ? 'selected' : '' }}>Active</option>
-    <option value="0" {{ !$status ? 'selected' : '' }}>Inactive</option>
-</select>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                    </select>
 
                     </div>
                     @error('aktif')
@@ -116,7 +116,7 @@
                             document.write(new Date().getFullYear())
                         </script>,
                         made with <i class="fa fa-heart"></i> by
-                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Orang Ganteng</a>
+                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Nesya Mulia</a>
                         for a better web.
                     </div>
                 </div>

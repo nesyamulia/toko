@@ -7289,7 +7289,12 @@ textarea.form-control-lg {
 
 .bg-white {
   background-color: #fff !important; }
-
+.bg-hijau {
+  background-color: #42f56f !important;
+}
+.text-hijau {
+  color: #1A4D2E;
+}
 .bg-body {
   background-color: #fff !important; }
 

@@ -27,9 +27,12 @@ Route::post('/customer/register', [CustomerRegisterController::class, 'register'
 Route::get('/customer/login', [CustomerLoginController::class, 'showLoginForm'])->name('customer.login');
 Route::post('/customer/login', [CustomerLoginController::class, 'login'])->name('customer.login.post');
 
+Route::post('/register', 'RegisterController@register')->name('register');
+
+
 
 // Route untuk Admin
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
     // Route Admin Panel
     Route::resource('dashboard', \App\Http\Controllers\Admin\DashboardController::class);
     Route::resource('product-category', \App\Http\Controllers\Admin\ProductCategoryController::class);
@@ -42,14 +45,14 @@ Route::post('/customer/login', [CustomerLoginController::class, 'login'])->name(
     Route::resource('order-detail', \App\Http\Controllers\Admin\OrderDetailController::class);
     Route::resource('delivery', \App\Http\Controllers\Admin\DeliveryController::class);
     Route::resource('payment', \App\Http\Controllers\Admin\PaymentController::class);
-    // Route::middleware('check.role')->group(function () {
+    Route::middleware('check.role')->group(function () {
         Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
         Route::resource('customer', \App\Http\Controllers\Admin\CustomerController::class);
-    // });
-// });
+    });
+});
 
 // Route Hak Akses 
-// Auth::routes();
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
@@ -60,6 +63,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::resource('category', \App\Http\Controllers\Frontend\CategoryController::class);
     Route::resource('contact', \App\Http\Controllers\Frontend\ContactController::class);
     Route::resource('single-product', \App\Http\Controllers\Frontend\SingleproductController::class);
+    Route::get('/single-product/{id}', 'Frontend\SingleproductController@show')->name('single-product');
     Route::resource('tracking', \App\Http\Controllers\Frontend\TrackingController::class);    
     Route::resource('home-page', \App\Http\Controllers\Frontend\LandingpageController::class);
     Route::resource('wishlist-product', \App\Http\Controllers\Frontend\WishlistproductController::class);
@@ -69,3 +73,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/', \App\Http\Controllers\Frontend\LandingpageController::class);
 
 ?>
+
+

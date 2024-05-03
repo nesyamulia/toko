@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="icon" href="../../img/cloth-icon.png" type="image/png" />
-  <title>
-  @yield('title')
-  </title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../../css/bootstrap.css" />
-  <link rel="stylesheet" href="../../vendors/linericon/style.css" />
-  <link rel="stylesheet" href="../../css/font-awesome.min.css" />
-  <link rel="stylesheet" href="../../css/themify-icons.css" />
-  <link rel="stylesheet" href="../../css/flaticon.css" />
-  <link rel="stylesheet" href="../../vendors/owl-carousel/owl.carousel.min.css" />
-  <link rel="stylesheet" href="../../vendors/lightbox/simpleLightbox.css" />
-  <link rel="stylesheet" href="../../vendors/nice-select/css/nice-select.css" />
-  <link rel="stylesheet" href="../../vendors/animate-css/animate.css" />
-  <link rel="stylesheet" href="../../vendors/jquery-ui/jquery-ui.css" />
-  <!-- main css -->
-  <link rel="stylesheet" href="../../css/style.css" /> 
-  <link rel="stylesheet" href="../../css/responsive.css" />
-  
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>FreshMart</title>
+        <link rel="icon" type="image/png" href="../img/logo freshmart.png">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
 
-<body>
-    @yield('header')
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="../../js/jquery-3.2.1.min.js"></script>
-  <script src="../../js/popper.js"></script>
-  <script src="../../js/bootstrap.min.js"></script>
-  <script src="../../js/stellar.js"></script>
-  <script src="../../vendors/lightbox/simpleLightbox.min.js"></script>
-  <script src="../../vendors/nice-select/js/jquery.nice-select.min.js"></script>
-  <script src="../../vendors/isotope/imagesloaded.pkgd.min.js"></script>
-  <script src="../../vendors/isotope/isotope-min.js"></script>
-  <script src="../../vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="../../js/jquery.ajaxchimp.min.js"></script>
-  <script src="../../vendors/counter-up/jquery.waypoints.min.js"></script>
-  <script src="../../vendors/counter-up/jquery.counterup.js"></script>
-  <script src="../../js/mail-script.js"></script>
-  <script src="../../js/theme.js"></script>
-</body>
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="../css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        @yield('header')
+      <!-- JavaScript Libraries -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+    <script src="../lib/lightbox/js/lightbox.min.js"></script>
+    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>
+    </body>
+
 </html>

@@ -40,6 +40,6 @@ class LandingpageController extends Controller
             }
         }
 
-        return view('frontend.landingpage.index', compact('products_populer', 'products_limited', 'products_discount'));
+        return view('frontend.landingpage.landingpage', compact('products_populer', 'products_limited', 'products_discount'));
     }
 }
