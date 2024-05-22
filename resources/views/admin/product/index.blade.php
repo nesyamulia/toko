@@ -21,7 +21,6 @@
                             <thead>
                             <tr>
                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">No</th>
-                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Product Category ID</th>
                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Product Category Name</th>
                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Name Product</th>
                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Description</th>
@@ -42,7 +41,6 @@
                                     @foreach($products as $index => $product)
                                     <tr>
                                         <td class="text-center">{{ $index + 1 }}</td>
-                                        <td class="text-center">{{ $product->category->id}}</td>
                                         <td class="text-center">{{ $product->category->category_name }}</td>
                                         <td class="text-center">{{ $product->product_name }}</td>                                  
                                         <td class="text-center">

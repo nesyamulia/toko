@@ -47,7 +47,7 @@
                 <div class="mb-3 ms-3 me-3">
                     <label for="category_name" class="form-label">Category Name</label>
                     <div class="border-contrast p-1 rounded"> 
-                        <input type="text" class="form-control border-0" id="category_name" name="category_name" placeholder=" Category Name" aria-label="category_name" value="{{ $category->category_name }}">
+                        <input type="text" class="form-control text-white border-0" id="category_name" name="category_name" placeholder=" Category Name" aria-label="category_name" value="{{ $category->category_name }}" class="text-dark">
                     </div>
                     @error('category_name')
                         <div class="error-message">{{ $message }}</div>

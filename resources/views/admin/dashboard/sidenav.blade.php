@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
       <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('dashboard') ? 'active bg-gradient-success' : '' }}" href="/dashboard">
+          <a class="nav-link text-white {{request()->routeIs('dashboard') ? 'active bg-gradient-success' : '' }}" href="/dashboard">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-chart-line fa-pro text-primary"></i>
             </div>
@@ -22,7 +22,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Product </h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('product-category') ? 'active bg-gradient-success' : '' }}" href="/product-category">
+          <a class="nav-link text-white {{request()->routeIs('product-category.*') ? 'active bg-gradient-success' : '' }}" href="/product-category">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-tags fa-pro text-success"></i>
             </div>
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('product') ? 'active bg-gradient-success' : '' }}" href="/product">
+          <a class="nav-link text-white {{request()->routeIs('product.*') ? 'active bg-gradient-success' : '' }}" href="/product">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-box fa-pro text-warning"></i>
             </div>
@@ -38,7 +38,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('product-review') ? 'active bg-gradient-success' : '' }}" href="/product-review">
+          <a class="nav-link text-white {{request()->routeIs('product-review.*') ? 'active bg-gradient-success' : '' }}" href="/product-review">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-star fa-pro text-info"></i>
             </div>
@@ -46,7 +46,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('wishlist') ? 'active bg-gradient-success' : '' }}" href="/wishlist">
+          <a class="nav-link text-white {{request()->routeIs('wishlist.*') ? 'active bg-gradient-success' : '' }}" href="/wishlist">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-heart fa-pro text-danger"></i>
             </div>
@@ -58,7 +58,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Discount</h6>
         </li>
         <li class="nav-item">
-        <a class="nav-link text-white {{ Request::is('discount-category') ? 'active bg-gradient-success' : '' }}" href="/discount-category">
+        <a class="nav-link text-white {{request()->routeIs('discount-category.*') ? 'active bg-gradient-success' : '' }}" href="/discount-category">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-tags fa-pro text-primary"></i>
             </div>
@@ -66,7 +66,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('discount') ? 'active bg-gradient-success' : '' }}" href="/discount">
+          <a class="nav-link text-white {{request()->routeIs('discount.*') ? 'active bg-gradient-success' : '' }}" href="/discount">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-percent fa-pro text-secondary"></i>
             </div>
@@ -78,7 +78,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Transaction</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('order') ? 'active bg-gradient-success' : '' }}" href="/order">
+          <a class="nav-link text-white {{request()->routeIs('order.*') ? 'active bg-gradient-success' : '' }}" href="/order">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-shopping-basket fa-pro text-success"></i>
             </div>
@@ -86,7 +86,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('order-detail') ? 'active bg-gradient-success' : '' }}" href="/order-detail">
+          <a class="nav-link text-white {{request()->routeIs('order-detail.*') ? 'active bg-gradient-success' : '' }}" href="/order-detail">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-receipt fa-pro text-warning"></i>
             </div>
@@ -94,7 +94,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('delivery') ? 'active bg-gradient-success' : '' }}" href="/delivery">
+          <a class="nav-link text-white {{request()->routeIs('delivery.*') ? 'active bg-gradient-success' : '' }}" href="/delivery">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-truck fa-pro text-info"></i>
             </div>
@@ -102,7 +102,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{ Request::is('payment') ? 'active bg-gradient-success' : '' }}" href="/payment">
+          <a class="nav-link text-white {{request()->routeIs('payment.*') ? 'active bg-gradient-success' : '' }}" href="/payment">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-money-check-alt fa-pro text-danger"></i>
             </div>
@@ -114,42 +114,44 @@
     <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account</h6>
 </li>
 
-<!-- @if(auth()->check() && Auth::user()->roles !== 'admin') -->
+
+@if(Auth::check() && Auth::user()->roles === 'owner')
     <li class="nav-item">
-        <a class="nav-link text-white {{ Request::is('user') ? 'active bg-gradient-success' : '' }}" href="/user">
+        <a class="nav-link text-white {{ request()->routeIs('user.*') ? 'active bg-gradient-success' : '' }}" href="/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fas fa-users fa-pro text-primary"></i>
             </div>
             <span class="nav-link-text ms-1">Users</span>
         </a>
     </li>
-<!-- @endif -->
+@endif
 
-<!-- @if(auth()->check() && Auth::user()->roles !== 'admin') -->
+@if(Auth::check() && Auth::user()->roles === 'owner')
     <li class="nav-item">
-        <a class="nav-link text-white {{ Request::is('customer') ? 'active bg-gradient-success' : '' }}" href="/customer">
+        <a class="nav-link text-white {{ request()->routeIs('customer.*') ? 'active bg-gradient-success' : '' }}" href="/customer">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fas fa-user-friends fa-pro text-secondary"></i>
             </div>
             <span class="nav-link-text ms-1">Customers</span>
         </a>
     </li>
-<!-- @endif -->
+@endif
+
 
         
-        <!-- @if(auth()->check()) -->
+        @if(auth()->check())
 <li class="nav-item">
-  <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST"> -->
-    <!-- @csrf -->
+  <form id="logout-form" action="{{ route('logout') }}" method="POST">
+   @csrf
     <a class="nav-link text-white " href="#" onclick="document.getElementById('logout-form').submit();">
       <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
       <i class="fas fa-sign-out-alt fa-pro text-success"></i>
       </div>
       <span class="nav-link-text ms-1">Sign Out</span>
     </a>
-  <!-- </form> -->
+  </form>
 </li>
-<!-- @endif -->
+@endif
       </ul>
     </div> 
     </div>

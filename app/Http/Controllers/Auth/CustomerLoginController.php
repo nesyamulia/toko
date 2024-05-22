@@ -7,7 +7,7 @@ use App\Http\Middleware\AuthenticateCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 
 class CustomerLoginController extends Controller
@@ -40,7 +40,7 @@ class CustomerLoginController extends Controller
         $password = $request->input('password');
     
         // Cari pengguna berdasarkan kredensial
-        $user = Customer::where('email', $credentials['email'] ?? null)
+        $user = User::where('email', $credentials['email'] ?? null)
                         ->orWhere('name', $credentials['name'] ?? null)
                         ->first();
     
@@ -56,6 +56,12 @@ class CustomerLoginController extends Controller
 
         // Jika autentikasi gagal, kembali ke halaman login dengan pesan error
         return back()->withErrors(['login' => 'Nama lengkap atau email, atau password salah.'])->withInput($request->only('login'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('customers')->logout();
+        return redirect('/customer/login')->with('success', 'Logout Berhasil');
     }
 }
 

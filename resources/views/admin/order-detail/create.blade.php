@@ -48,11 +48,11 @@
                     <label for="product_id" class="form-label">Product</label>
                     <div class="border-contrast p-1 rounded"> 
                         <!-- Dropdown untuk memilih produk -->
-                        <select class="form-select border-0" id="product_id" name="product_id">
+                        <select class="form-select text-white border-0" id="product_id" name="product_id">
                             <option value="">Select Product</option>
                             <!-- Loop melalui daftar produk -->
                             @foreach($products as $product)
-                                <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                                <option value="{{ $product->id }}" class="text-dark">{{ $product->product_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -64,11 +64,11 @@
                     <label for="order_id" class="form-label">Order</label>
                     <div class="border-contrast p-1 rounded"> 
                         <!-- Dropdown untuk memilih pesanan -->
-                        <select class="form-select border-0" id="order_id" name="order_id">
+                        <select class="form-select text-white border-0" id="order_id" name="order_id">
                             <option value="">Select Order</option>
                             <!-- Loop melalui daftar pesanan -->
                             @foreach($orders as $order)
-                                <option value="{{ $order->id }}">{{ $order->order_date }}</option>
+                                <option value="{{ $order->id }}" class="text-dark">{{ $order->order_date }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -80,7 +80,7 @@
                     <label for="quantity" class="form-label">Quantity</label>
                     <div class="border-contrast p-1 rounded"> 
                         <!-- Input untuk menentukan jumlah -->
-                        <input type="number" class="form-control border-0" id="quantity" name="quantity">
+                        <input type="number" class="form-control text-white border-0" id="quantity" name="quantity">
                     </div>
                     @error('quantity')
                         <div class="error-message">{{ $message }}</div>
@@ -90,7 +90,7 @@
                     <label for="subtotal" class="form-label">Subtotal</label>
                     <div class="border-contrast p-1 rounded"> 
                         <!-- Input untuk menentukan subtotal -->
-                        <input type="number" class="form-control border-0" id="subtotal" name="subtotal">
+                        <input type="number" class="form-control text-white border-0" id="subtotal" name="subtotal">
                     </div>
                     @error('subtotal')
                         <div class="error-message">{{ $message }}</div>

@@ -46,10 +46,10 @@
         <div class="mb-3 ms-3 me-3">
             <label for="category_discount_id" class="form-label">Category</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select border-0" id="category_discount_id" name="category_discount_id">
+                <select class="form-select text-white border-0" id="category_discount_id" name="category_discount_id">
                     <option value="">Select Category</option>
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                        <option value="{{ $category->id }}" class="text-dark">{{ $category->category_name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -60,10 +60,10 @@
         <div class="mb-3 ms-3 me-3">
             <label for="product_id" class="form-label">Product</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select border-0" id="product_id" name="product_id">
+                <select class="form-select text-white border-0" id="product_id" name="product_id">
                     <option value="">Select Product</option>
                     @foreach($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                        <option value="{{ $product->id }}" class="text-dark">{{ $product->product_name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -74,7 +74,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="start_date" class="form-label">Start Date</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="datetime-local" class="form-control border-0" id="start_date" name="start_date">
+                <input type="datetime-local" class="form-control text-white border-0" id="start_date" name="start_date">
             </div>
             @error('start_date')
                 <div class="error-message">{{ $message }}</div>
@@ -83,7 +83,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="end_date" class="form-label">End Date</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="datetime-local" class="form-control border-0" id="end_date" name="end_date" >
+                <input type="datetime-local" class="form-control text-white border-0" id="end_date" name="end_date" >
             </div>
             @error('end_date')
                 <div class="error-message">{{ $message }}</div>
@@ -92,7 +92,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="percentage" class="form-label">Percentage</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="number" class="form-control border-0" id="percentage" name="percentage" value="{{ old('percentage') }}">
+                <input type="number" class="form-control text-white border-0" id="percentage" name="percentage" value="{{ old('percentage') }}" class="text-dark">
             </div>
             @error('percentage')
                 <div class="error-message">{{ $message }}</div>

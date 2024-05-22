@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Customer;
+use App\Models\User;
 
 class CustomerRegisterController extends Controller
 {
@@ -22,14 +22,10 @@ class CustomerRegisterController extends Controller
             'name' => 'required|string|max:255|unique:customers',
             'email' => 'required|string|email|max:255|unique:customers',
             'password' => 'required|string|min:8|confirmed',
-            'phone' => 'required|string|max:255',
-            'address1' => 'required|string|max:255',
-            'address2' => 'nullable|string|max:255',
-            'address3' => 'nullable|string|max:255',
         ]);
 
         // Membuat entri baru untuk pelanggan
-        Customer::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),

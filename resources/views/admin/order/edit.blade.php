@@ -47,10 +47,10 @@
         <div class="mb-3 ms-3 me-3">
             <label for="customer_id" class="form-label">Customer</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select border-0" id="customer_id" name="customer_id">
+                <select class="form-select text-white border-0" id="customer_id" name="customer_id">
                     <option value="">Select Customer</option>
                     @foreach($customers as $customer)
-                        <option value="{{ $customer->id }}" @if($order->customer_id == $customer->id) selected @endif>{{ $customer->name }}</option>
+                        <option value="{{ $customer->id }}" class="text-dark" @if($order->customer_id == $customer->id) selected @endif>{{ $customer->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -61,7 +61,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="order_date" class="form-label">Order Date</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="datetime-local" class="form-control border-0" id="order_date" name="order_date" value="{{ $order->order_date }}">
+                <input type="datetime-local" class="form-control text-white border-0" id="order_date" name="order_date" value="{{ $order->order_date }}" class="text-dark">
             </div>
             @error('order_date')
                 <div class="error-message">{{ $message }}</div>
@@ -70,7 +70,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="total_amount" class="form-label">Total Amount</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="number" class="form-control border-0" id="total_amount" name="total_amount" value="{{ $order->total_amount }}">
+                <input type="number" class="form-control text-white border-0" id="total_amount" name="total_amount" value="{{ $order->total_amount }}" class="text-dark">
             </div>
             @error('total_amount')
                 <div class="error-message">{{ $message }}</div>
@@ -79,7 +79,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="status" class="form-label">Status</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="status" name="status" value="{{ $order->status }}">
+                <input type="text" class="form-control text-white border-0" id="status" name="status" value="{{ $order->status }}" class="text-dark">
             </div>
             @error('status')
                 <div class="error-message">{{ $message }}</div>

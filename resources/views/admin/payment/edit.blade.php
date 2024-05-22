@@ -47,10 +47,10 @@
         <div class="mb-3 ms-3 me-3">
             <label for="order_id" class="form-label">Order ID</label>
             <div class="border-contrast p-1 rounded"> 
-    <select class="form-select border-0" id="order_id" name="order_id" aria-label="Order ID">
+    <select class="form-select text-white border-0" id="order_id" name="order_id" aria-label="Order ID">
         <!-- Loop through available orders -->
         @foreach($orders as $order)
-            <option value="{{ $order->id }}" {{ $payment->order_id == $order->id ? 'selected' : '' }}>{{ $order->id }}</option>
+            <option value="{{ $order->id }}" class="text-dark" {{ $payment->order_id == $order->id ? 'selected' : '' }}>{{ $order->id }}</option>
         @endforeach
     </select>
 </div>
@@ -62,7 +62,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="payment_date" class="form-label">Payment Date</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="datetime-local" class="form-control border-0" id="payment_date" name="payment_date" placeholder="Payment Date" aria-label="payment_date" value="{{ $payment->payment_date }}">
+                <input type="datetime-local" class="form-control text-white border-0" id="payment_date" name="payment_date" placeholder="Payment Date" aria-label="payment_date" value="{{ $payment->payment_date }}" class="text-dark">
             </div>
             @error('payment_date')
                 <div class="error-message">{{ $message }}</div>
@@ -71,7 +71,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="payment_method" class="form-label">Payment Method</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="payment_method" name="payment_method" placeholder="Payment Method" aria-label="payment_method" value="{{ $payment->payment_method }}">
+                <input type="text" class="form-control text-white border-0" id="payment_method" name="payment_method" placeholder="Payment Method" aria-label="payment_method" value="{{ $payment->payment_method }}" class="text-dark">
             </div>
             @error('payment_method')
                 <div class="error-message">{{ $message }}</div>
@@ -80,7 +80,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="amount" class="form-label">Amount</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="number" class="form-control border-0" id="amount" name="amount" placeholder="Amount" aria-label="amount" value="{{ $payment->amount }}">
+                <input type="number" class="form-control text-white border-0" id="amount" name="amount" placeholder="Amount" aria-label="amount" value="{{ $payment->amount }}" class="text-dark">
             </div>
             @error('amount')
                 <div class="error-message">{{ $message }}</div>

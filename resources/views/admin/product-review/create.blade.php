@@ -46,10 +46,10 @@
         <div class="mb-3 ms-3 me-3">
             <label for="customer_id" class="form-label">Customer</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select border-0" id="customer_id" name="customer_id">
+                <select class="form-select text-white border-0" id="customer_id" name="customer_id">
                     <option value="">Select Customer</option>
                     @foreach($customers as $customer)
-                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                        <option value="{{ $customer->id }}" class="text-dark">{{ $customer->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -60,10 +60,10 @@
         <div class="mb-3 ms-3 me-3">
             <label for="product_id" class="form-label">Product</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select border-0" id="product_id" name="product_id">
+                <select class="form-select text-white border-0" id="product_id" name="product_id">
                     <option value="">Select Product</option>
                     @foreach($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                        <option value="{{ $product->id }}" class="text-dark">{{ $product->product_name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -74,7 +74,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="rating" class="form-label">Rating</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="number" class="form-control border-0" id="rating" name="rating" value="{{ old('rating') }}">
+                <input type="number" class="form-control text-white border-0" id="rating" name="rating" value="{{ old('rating') }}" class="text-dark">
             </div>
             @error('rating')
                 <div class="error-message">{{ $message }}</div>
@@ -83,7 +83,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="comment" class="form-label">Comment</label>
             <div class="border-contrast p-1 rounded"> 
-                <textarea class="form-control border-0" id="comment" name="comment">{{ old('comment') }}</textarea>
+                <textarea class="form-control text-white border-0" id="comment" name="comment">{{ old('comment') }}</textarea>
             </div>
             @error('comment')
                 <div class="error-message">{{ $message }}</div>

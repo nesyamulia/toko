@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_category_id')->unique();
+            $table->unsignedBigInteger('product_category_id');
             $table->foreign('product_category_id')->references('id')->on('product_categories')->OnDelete('cascade')->OnUpdate('cascade');
             $table->string('product_name',100)->unique();
             $table->text('description');

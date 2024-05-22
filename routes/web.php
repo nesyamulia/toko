@@ -26,6 +26,7 @@ Route::post('/customer/register', [CustomerRegisterController::class, 'register'
 // Route login customer
 Route::get('/customer/login', [CustomerLoginController::class, 'showLoginForm'])->name('customer.login');
 Route::post('/customer/login', [CustomerLoginController::class, 'login'])->name('customer.login.post');
+Route::get('/customer/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
 
 Route::post('/register', 'RegisterController@register')->name('register');
 
@@ -45,10 +46,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('order-detail', \App\Http\Controllers\Admin\OrderDetailController::class);
     Route::resource('delivery', \App\Http\Controllers\Admin\DeliveryController::class);
     Route::resource('payment', \App\Http\Controllers\Admin\PaymentController::class);
-    Route::middleware('check.role')->group(function () {
+    // Route::middleware('check.role')->group(function () {
         Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
         Route::resource('customer', \App\Http\Controllers\Admin\CustomerController::class);
-    });
+    // });
 });
 
 // Route Hak Akses 
@@ -58,7 +59,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route Frontend untuk Customer 
 // Route::group(['middleware' => 'auth:customers'], function () {
-    Route::resource('cart', \App\Http\Controllers\Frontend\CartController::class);
+    Route::get('/cart', [\App\Http\Controllers\frontend\CartController::class, 'cart'])->name('frontend.cart');
+    Route::post('/add-to-cart', [\App\Http\Controllers\frontend\CartController::class, 'addCart'])->name('addCart');
     Route::resource('checkout', \App\Http\Controllers\Frontend\CheckoutController::class);
     Route::resource('category', \App\Http\Controllers\Frontend\CategoryController::class);
     Route::resource('contact', \App\Http\Controllers\Frontend\ContactController::class);

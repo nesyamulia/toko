@@ -21,10 +21,8 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">No</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">ID</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Name</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Email</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Password</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Roles</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Status</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -35,10 +33,8 @@
                                     @foreach($users as $index => $user)
                                     <tr>
                                         <td class="text-center">{{ $index + 1 }}</td>
-                                        <td class="text-center">{{ $user->id }}</td>
                                         <td class="text-center">{{ $user->name }}</td>
                                         <td class="text-center">{{ $user->email}}</td>
-                                        <td class="text-center">{{ $user->password }}</td>
                                         <td class="text-center">{{ $user->roles}}</td>
                                         <td>{{$user->id == auth()->id() ? 'Active' : 'Inactive'}}</td>
                                         <td class="text-center">

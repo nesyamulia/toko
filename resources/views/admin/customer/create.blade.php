@@ -46,7 +46,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="name" class="form-label">Name</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="name" name="name" placeholder=" Name" aria-label="name" value="{{ old('name') }}">
+                <input type="text" class="form-control text-white border-0" id="name" name="name" placeholder=" Name" aria-label="name" value="{{ old('name') }}" class="text-dark">
             </div>
             @error('name')
                 <div class="error-message">{{ $message }}</div>
@@ -55,7 +55,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="email" class="form-label">Email</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="email" class="form-control border-0" id="email" name="email" placeholder=" Email" aria-label="email" value="{{ old('email') }}">
+                <input type="email" class="form-control text-white border-0" id="email" name="email" placeholder=" Email" aria-label="email" value="{{ old('email') }}" class="text-dark">
             </div>
             @error('email')
                 <div class="error-message">{{ $message }}</div>
@@ -64,7 +64,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="password" class="form-label">Password</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="password" class="form-control border-0" id="password" name="password" placeholder=" Password" aria-label="password" value="{{ old('password') }}">
+                <input type="password" class="form-control text-white border-0" id="password" name="password" placeholder=" Password" aria-label="password" value="{{ old('password') }}" class="text-dark">
             </div>
             @error('password')
                 <div class="error-message">{{ $message }}</div>
@@ -73,7 +73,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="phone" class="form-label">Phone</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="phone" name="phone" placeholder=" Phone" aria-label="phone" value="{{ old('phone') }}">
+                <input type="text" class="form-control text-white border-0" id="phone" name="phone" placeholder=" Phone" aria-label="phone" value="{{ old('phone') }}" class="text-dark">
             </div>
             @error('phone')
                 <div class="error-message">{{ $message }}</div>
@@ -82,7 +82,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="address1" class="form-label">Address Line 1</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="address1" name="address1" placeholder=" Address Line 1" aria-label="address1" value="{{ old('address1') }}">
+                <input type="text" class="form-control text-white border-0" id="address1" name="address1" placeholder=" Address Line 1" aria-label="address1" value="{{ old('address1') }}" class="text-dark">
             </div>
             @error('address1')
                 <div class="error-message">{{ $message }}</div>
@@ -91,7 +91,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="address2" class="form-label">Address Line 2</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="address2" name="address2" placeholder=" Address Line 2" aria-label="address2" value="{{ old('address2') }}">
+                <input type="text" class="form-control text-white border-0" id="address2" name="address2" placeholder=" Address Line 2" aria-label="address2" value="{{ old('address2') }}" class="text-dark">
             </div>
             @error('address2')
                 <div class="error-message">{{ $message }}</div>
@@ -100,7 +100,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="address3" class="form-label">Address Line 3</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="address3" name="address3" placeholder=" Address Line 3" aria-label="address3" value="{{ old('address3') }}">
+                <input type="text" class="form-control text-white border-0" id="address3" name="address3" placeholder=" Address Line 3" aria-label="address3" value="{{ old('address3') }}" class="text-dark">
             </div>
             @error('address3')
                 <div class="error-message">{{ $message }}</div>

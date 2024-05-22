@@ -47,7 +47,7 @@
                 <div class="mb-3 ms-3 me-3">
                     <label for="name" class="form-label">Name</label>
                     <div class="border-contrast p-1 rounded"> 
-                        <input type="text" class="form-control border-0" id="name" name="name" placeholder=" Name" aria-label="Name" value="{{ $user->name }}">
+                        <input type="text" class="form-control text-white border-0" id="name" name="name" placeholder=" Name" aria-label="Name" value="{{ $user->name }}" class="text-dark">
                     </div>
                     @error('name')
                         <div class="error-message">{{ $message }}</div>
@@ -56,7 +56,7 @@
                 <div class="mb-3 ms-3 me-3">
                     <label for="email" class="form-label">Email</label>
                     <div class="border-contrast p-1 rounded"> 
-                        <input type="email" class="form-control border-0" id="email" name="email" placeholder=" Email" aria-label="Email" value="{{ $user->email }}">
+                        <input type="email" class="form-control text-white border-0" id="email" name="email" placeholder=" Email" aria-label="Email" value="{{ $user->email }}" class="text-dark">
                     </div>
                     @error('email')
                         <div class="error-message">{{ $message }}</div>
@@ -65,7 +65,7 @@
                 <div class="mb-3 ms-3 me-3">
                     <label for="password" class="form-label">Password</label>
                     <div class="border-contrast p-1 rounded"> 
-                        <input type="password" class="form-control border-0" id="password" name="password" placeholder=" Password" aria-label="Password">
+                        <input type="password" class="form-control text-white border-0" id="password" name="password" placeholder=" Password" aria-label="Password">
                     </div>
                     @error('password')
                         <div class="error-message">{{ $message }}</div>
@@ -74,7 +74,7 @@
                 <div class="mb-3 ms-3 me-3">
                     <label for="roles" class="form-label">Roles</label>
                     <div class="border-contrast p-1 rounded"> 
-                        <select class="form-control border-0" id="roles" name="roles" aria-label="Roles">
+                        <select class="form-control text-white border-0" id="roles" name="roles" aria-label="Roles">
                             <option value="admin" {{ $user->roles === 'admin' ? 'selected' : '' }}>Admin</option>
                             <option value="owner" {{ $user->roles === 'owner' ? 'selected' : '' }}>Owner</option>
                         </select>
@@ -86,7 +86,7 @@
                 <div class="mb-3 ms-3 me-3">
                     <label for="aktif" class="form-label">Status</label>
                     <div class="border-contrast p-1 rounded"> 
-                        <select class="form-control border-0" id="aktif" name="aktif" aria-label="Aktif">
+                        <select class="form-control text-white border-0" id="aktif" name="aktif" aria-label="Aktif">
                             <option value="1" {{ $user->aktif === 1 ? 'selected' : '' }}>Active</option>
                             <option value="0" {{ $user->aktif === 0 ? 'selected' : '' }}>Inactive</option>
                         </select>

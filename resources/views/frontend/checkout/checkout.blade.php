@@ -96,9 +96,9 @@
                                         </div>
                                     </th>
                                     <td class="py-5">Awesome Brocoli</td>
-                                    <td class="py-5">$69.00</td>
+                                    <td class="py-5">Rp69.00</td>
                                     <td class="py-5">2</td>
-                                    <td class="py-5">$138.00</td>
+                                    <td class="py-5">Rp138.00</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
@@ -107,9 +107,9 @@
                                         </div>
                                     </th>
                                     <td class="py-5">Potatoes</td>
-                                    <td class="py-5">$69.00</td>
+                                    <td class="py-5">Rp69.00</td>
                                     <td class="py-5">2</td>
-                                    <td class="py-5">$138.00</td>
+                                    <td class="py-5">Rp138.00</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
@@ -118,9 +118,9 @@
                                         </div>
                                     </th>
                                     <td class="py-5">Big Banana</td>
-                                    <td class="py-5">$69.00</td>
+                                    <td class="py-5">Rp69.00</td>
                                     <td class="py-5">2</td>
-                                    <td class="py-5">$138.00</td>
+                                    <td class="py-5">Rp138.00</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">
@@ -132,7 +132,7 @@
                                     </td>
                                     <td class="py-5">
                                         <div class="py-3 border-bottom border-top">
-                                            <p class="mb-0 text-dark">$414.00</p>
+                                            <p class="mb-0 text-dark">Rp414.00</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -149,11 +149,11 @@
                                         </div>
                                         <div class="form-check text-start">
                                             <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-2" name="Shipping-1" value="Shipping">
-                                            <label class="form-check-label" for="Shipping-2">Flat rate: $15.00</label>
+                                            <label class="form-check-label" for="Shipping-2">Flat rate: Rp15.00</label>
                                         </div>
                                         <div class="form-check text-start">
                                             <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-3" name="Shipping-1" value="Shipping">
-                                            <label class="form-check-label" for="Shipping-3">Local Pickup: $8.00</label>
+                                            <label class="form-check-label" for="Shipping-3">Local Pickup: Rp8.00</label>
                                         </div>
                                     </td>
                                 </tr>
@@ -167,7 +167,7 @@
                                     <td class="py-5"></td>
                                     <td class="py-5">
                                         <div class="py-3 border-bottom border-top">
-                                            <p class="mb-0 text-dark">$135.00</p>
+                                            <p class="mb-0 text-dark">Rp135.00</p>
                                         </div>
                                     </td>
                                 </tr>

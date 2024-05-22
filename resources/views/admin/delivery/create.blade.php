@@ -46,10 +46,10 @@
         <div class="mb-3 ms-3 me-3">
     <label for="order_id" class="form-label">Order ID</label>
     <div class="border-contrast p-1 rounded"> 
-        <select class="form-select border-0" id="order_id" name="order_id" aria-label="Order ID">
+        <select class="form-select text-white border-0" id="order_id" name="order_id" aria-label="Order ID">
             <!-- Loop through available orders -->
             @foreach($orders as $order)
-                <option value="{{ $order->id }}">{{ $order->id }}</option>
+                <option value="{{ $order->id }}" class="text-dark">{{ $order->id }}</option>
             @endforeach
         </select>
     </div>
@@ -61,7 +61,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="shipping_date" class="form-label">Shipping Date</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="datetime-local" class="form-control border-0" id="shipping_date" name="shipping_date" placeholder=" Shipping Date" aria-label="shipping_date" value="{{ old('shipping_date') }}">
+                <input type="datetime-local" class="form-control text-white border-0" id="shipping_date" name="shipping_date" placeholder=" Shipping Date" aria-label="shipping_date" value="{{ old('shipping_date') }}" class="text-dark">
             </div>
             @error('shipping_date')
                 <div class="error-message">{{ $message }}</div>
@@ -70,7 +70,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="tracking_code" class="form-label">Tracking Code</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="tracking_code" name="tracking_code" placeholder=" Tracking Code" aria-label="tracking_code" value="{{ old('tracking_code') }}">
+                <input type="text" class="form-control text-white border-0" id="tracking_code" name="tracking_code" placeholder=" Tracking Code" aria-label="tracking_code" value="{{ old('tracking_code') }}" class="text-dark">
             </div>
             @error('tracking_code')
                 <div class="error-message">{{ $message }}</div>
@@ -79,7 +79,7 @@
         <div class="mb-3 ms-3 me-3">
             <label for="status" class="form-label">Status</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control border-0" id="status" name="status" placeholder=" Status" aria-label="status" value="{{ old('status') }}">
+                <input type="text" class="form-control text-white border-0" id="status" name="status" placeholder=" Status" aria-label="status" value="{{ old('status') }}" class="text-dark">
             </div>
             @error('status')
                 <div class="error-message">{{ $message }}</div>

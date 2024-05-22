@@ -18,32 +18,20 @@
                                 <div class="mb-3">
                                     <h4>Categories</h4>
                                     <ul class="list-unstyled fruite-categorie">
-                                        <!-- <li>
+                                      <li>
                                             <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i class="fas fa-apple-alt me-2"></i>Apples</a>
-                                                <span>(3)</span>
+                                                <!-- Tautan untuk kategori vegetables -->
+                                                <a href="{{ route('category.index', ['category_id' => '1']) }}" class="{{ request()->get('category_id') == '1' ? 'active' : '' }}">
+                                                    <i class="fas fa-apple-alt me-2"></i>Vegetables
+                                                </a>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i class="fas fa-apple-alt me-2"></i>Oranges</a>
-                                                <span>(5)</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i class="fas fa-apple-alt me-2"></i>Strawbery</a>
-                                                <span>(2)</span>
-                                            </div>
-                                        </li> -->
-                                        <li>
-                                            <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i class="fas fa-apple-alt me-2"></i>Sayuran</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i class="fas fa-apple-alt me-2"></i>Buah</a>
+                                                <!-- Tautan untuk kategori fruits -->
+                                                <a href="{{ route('category.index', ['category_id' => '2']) }}" class="{{ request()->get('category_id') == '2' ? 'active' : '' }}">
+                                                    <i class="fas fa-apple-alt me-2"></i>Fruits
+                                                </a>
                                             </div>
                                         </li>
                                     </ul>
@@ -59,7 +47,7 @@
             <a href="{{ route('single-product', ['id' => $product->id]) }}"> <!-- Tautan ke halaman single-product -->
                 <div class="fruite-img">
                     <!-- Ubah img src dengan URL gambar dari model Product jika ada -->
-                    <img src="{{ $product->image1_url }}" class="img-fluid w-100 rounded-top" alt="">
+                    <img src="{{ $product->image1_url }}" class="img-fluid w-100 h-100 rounded-top" alt="">
                 </div>
                 <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
                     <!-- Tampilkan category_name dari model ProductCategory -->
@@ -69,7 +57,7 @@
                     <!-- Tampilkan product_name dan price dari model Product -->
                     <h4>{{ $product->product_name }}</h4>
                     <div class="d-flex justify-content-between flex-lg-wrap">
-                        <p class="text-dark fs-5 fw-bold mb-0">${{ $product->price }} / kg</p>
+                        <p class="text-dark fs-5 fw-bold mb-0">Rp{{ $product->price }} / 500gr</p>
                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">
                             <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
                         </a>
@@ -89,5 +77,13 @@
     </div>
 </div>
 <!-- Fruits Shop End-->
+<!-- active -->
+<style>
+    .active {
+    font-weight: bold;
+    color: #ffb524; /* Ganti dengan warna yang Anda inginkan */
+}
 
+</style>
+<!-- end active -->
 @endsection

@@ -51,10 +51,10 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="product_category_id" class="form-label">Product Category</label>
                 <div class="border-contrast p-1 rounded">
-                    <select class="form-select border-0" id="product_category_id" name="product_category_id" aria-label="product_category_id">
-                        <option value="">Select Category</option>
+                    <select class="form-select text-white border-0" id="product_category_id" name="product_category_id" aria-label="product_category_id">
+                        <option value="" class="text-dark">Select Category</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ $product->product_category_id == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                            <option value="{{ $category->id }}" class="text-dark" {{ $product->product_category_id == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -67,7 +67,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="product_name" class="form-label">Product Name</label>
                 <div class="border-contrast p-1 rounded">
-                    <input type="text" class="form-control border-0" id="product_name" name="product_name" placeholder="Name" aria-label="product_name" value="{{ $product->product_name }}">
+                    <input type="text" class="form-control text-white border-0" id="product_name" name="product_name" placeholder="Name" aria-label="product_name" value="{{ $product->product_name }}" class="text-dark">
                 </div>
                 @error('product_name')
                     <div class="error-message">{{ $message }}</div>
@@ -78,7 +78,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="description" class="form-label">Description</label>
                 <div class="border-contrast p-1 rounded">
-                    <textarea class="form-control border-0" id="description" name="description" placeholder="Description" aria-label="description">{{ $product->description }}</textarea>
+                    <textarea class="form-control text-white border-0" id="description" name="description" placeholder="Description" aria-label="description">{{ $product->description }}</textarea>
                 </div>
                 @error('description')
                     <div class="error-message">{{ $message }}</div>
@@ -89,7 +89,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="price" class="form-label">Price</label>
                 <div class="border-contrast p-1 rounded">
-                    <input type="number" class="form-control border-0" id="price" name="price" placeholder="Price" aria-label="price" value="{{ $product->price }}">
+                    <input type="number" class="form-control text-white border-0" id="price" name="price" placeholder="Price" aria-label="price" value="{{ $product->price }}" class="text-dark">
                 </div>
                 @error('price')
                     <div class="error-message">{{ $message }}</div>
@@ -100,7 +100,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="stok_quantity" class="form-label">Stock Quantity</label>
                 <div class="border-contrast p-1 rounded">
-                    <input type="number" class="form-control border-0" id="stok_quantity" name="stok_quantity" placeholder="Stock Quantity" aria-label="stok_quantity" value="{{ $product->stok_quantity }}">
+                    <input type="number" class="form-control text-white border-0" id="stok_quantity" name="stok_quantity" placeholder="Stock Quantity" aria-label="stok_quantity" value="{{ $product->stok_quantity }}" class="text-dark">
                 </div>
                 @error('stok_quantity')
                     <div class="error-message">{{ $message }}</div>
@@ -111,7 +111,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="image1_url" class="form-label">Image 1</label>
                 <div class="border-contrast p-1 rounded">
-                    <input type="file" class="form-control border-0" id="image1_url" name="image1_url" accept="image/*" aria-label="image1_url">
+                    <input type="file" class="form-control text-white border-0" id="image1_url" name="image1_url" accept="image/*" aria-label="image1_url">
                 </div>
                 @error('image1_url')
                 <div class="error-message">{{ $message }}</div>
@@ -126,7 +126,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="image2_url" class="form-label">Image 2</label>
                 <div class="border-contrast p-1 rounded">
-                    <input type="file" class="form-control border-0" id="image2_url" name="image2_url" accept="image/*" aria-label="image2_url" onchange="previewImage(input, 'image2_preview')">
+                    <input type="file" class="form-control text-white border-0" id="image2_url" name="image2_url" accept="image/*" aria-label="image2_url" onchange="previewImage(input, 'image2_preview')">
                 </div>
                 @error('image2_url')
                 <div class="error-message">{{ $message }}</div>
@@ -141,7 +141,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="image3_url" class="form-label">Image 3</label>
                 <div class="border-contrast p-1 rounded">
-                    <input type="file" class="form-control border-0" id="image3_url" name="image3_url" accept="image/*" aria-label="image3_url" onchange="previewImage(input, 'image3_preview')">
+                    <input type="file" class="form-control text-white border-0" id="image3_url" name="image3_url" accept="image/*" aria-label="image3_url" onchange="previewImage(input, 'image3_preview')">
                 </div>
                 @error('image3_url')
                 <div class="error-message">{{ $message }}</div>
@@ -156,7 +156,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="image4_url" class="form-label">Image 4</label>
                 <div class="border-contrast p-1 rounded">
-                    <input type="file" class="form-control border-0" id="image4_url" name="image4_url" accept="image/*" aria-label="image4_url">
+                    <input type="file" class="form-control text-white border-0" id="image4_url" name="image4_url" accept="image/*" aria-label="image4_url">
                 </div>
                 @error('image4_url')
                 <div class="error-message">{{ $message }}</div>
@@ -171,7 +171,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="image5_url" class="form-label">Image 5</label>
                 <div class="border-contrast p-1 rounded">
-                    <input type="file" class="form-control border-0" id="image5_url" name="image5_url" accept="image/*" aria-label="image5_url">
+                    <input type="file" class="form-control text-white border-0" id="image5_url" name="image5_url" accept="image/*" aria-label="image5_url">
                 </div>
                 @error('image5_url')
                 <div class="error-message">{{ $message }}</div>

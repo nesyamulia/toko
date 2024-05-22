@@ -4,13 +4,13 @@
 @section('header')
     @include('frontend.landingpage.header')
     <!-- Single Product Start -->
-    <div class="container-fluid py-5 mt-5">
+    <div id="productCarousel" class="container-fluid py-5 mt-5">
         <div class="container py-5">
             <div class="row g-4 mb-5">
                 <div class="col-lg-8 col-xl-9">
                     <div class="row g-4">
                         <div class="col-lg-6">
-                            <div id="productCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     @for ($i = 1; $i <= 5; $i++)
                                         <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
@@ -37,7 +37,7 @@
                         <div class="col-lg-6">
                             <h4 class="fw-bold mb-3">{{ $product->product_name }}</h4>
                             <p class="mb-3">Category: {{ $product->category->category_name }}</p>
-                            <h5 class="fw-bold mb-3">${{ $product->price }}</h5>
+                            <h5 class="fw-bold mb-3">Rp{{ $product->price }}</h5>
                             <div class="d-flex mb-4">
                                 <!-- Bintang-bintang untuk rating dapat ditambahkan di sini jika rating ada -->
                             </div>
@@ -56,9 +56,13 @@
                                     </button>
                                 </div>
                             </div>
-                            <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
+                            <form action="{{ route('addCart') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <button class="add_to_cart btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" type="submit">
                                 <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
-                            </a>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -210,39 +214,6 @@
                 <div class="col-lg-4 col-xl-3">
                     <div class="row g-4 fruite">
                         <div class="col-lg-12">                          
-                            <div class="mb-4">
-                                <h4>Categories</h4>
-                                <ul class="list-unstyled fruite-categorie">
-                                    <!-- <li>
-                                        <div class="d-flex justify-content-between fruite-name">
-                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Apples</a>
-                                            <span>(3)</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex justify-content-between fruite-name">
-                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Oranges</a>
-                                            <span>(5)</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex justify-content-between fruite-name">
-                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Strawbery</a>
-                                            <span>(2)</span>
-                                        </div>
-                                    </li> -->
-                                    <li>
-                                        <div class="d-flex justify-content-between fruite-name">
-                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Sayuran</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex justify-content-between fruite-name">
-                                            <a href="#"><i class="fas fa-apple-alt me-2"></i>Buah</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
