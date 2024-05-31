@@ -15,13 +15,16 @@ class Customer extends Authenticatable
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name',
+        'user_id',
+        'first_name',
+        'last_name',
         'email',
-        'password',
-        'phone',
-        'address1',
-        'address2',
-        'address3',
+        'phone_number',
+        'address',
+        'city',
+        'state',
+        'zip',
+        'order_notes',
     ];
 
     protected $hidden = [

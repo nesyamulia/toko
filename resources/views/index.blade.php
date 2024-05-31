@@ -959,7 +959,7 @@
                 <div class="position-relative">
                     <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
                     <div class="mb-4 pb-4 border-bottom border-secondary">
-                        <p class="mb-0">Vegetables and fruit are always fresh, always satisfied shopping at freshmart.
+                        <p class="mb-0">Vegetables and fruit are always fresh, always satisfied shopping at nersmart.
                         </p>
                     </div>
                     <div class="d-flex align-items-center flex-nowrap">
@@ -984,7 +984,7 @@
                 <div class="position-relative">
                     <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
                     <div class="mb-4 pb-4 border-bottom border-secondary">
-                        <p class="mb-0">I've bought several times at FreshMart, the delivery is also fast.
+                        <p class="mb-0">I've bought several times at NershMart, the delivery is also fast.
                         </p>
                     </div>
                     <div class="d-flex align-items-center flex-nowrap">

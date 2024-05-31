@@ -2,7 +2,7 @@
  <div class="container-fluid fixed-top">
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="/home-page" class="navbar-brand"><h1 class="text-primary display-6">FreshMart</h1></a>
+                    <a href="/home-page" class="navbar-brand"><h1 class="text-primary display-6">NersMart</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
@@ -29,8 +29,8 @@
                             <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                         </a>
 
-                        @if(Auth::guard('customers')->check())
-                            <span class="ms-2 my-auto">Welcome! {{ Auth::guard('customers')->user()->name }}</span>
+                        @if(Auth::guard('users')->check())
+                            <span class="ms-2 my-auto">Welcome! {{ Auth::guard('users')->user()->name }}</span>
                             <a href="{{ route('customer.logout')}}" class="icon-spacing my-auto">
                                 <i class="bi bi-box-arrow-right fa-2x" aria-hidden="true"></i>
                             </a>

@@ -2,8 +2,8 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-        <img src="../img/logo freshmart.png" style="border-radius: 10%;" alt="main_logo">
-        <span class="ms-3 font-weight-bold text-white">Fresh Mart</span>
+        <img src="{{asset('img/logo nersmart.png')}}" style="border-radius: 10%;" alt="main_logo">
+        <span class="ms-3 font-weight-bold text-white">Ners Mart</span>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
@@ -58,14 +58,6 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Discount</h6>
         </li>
         <li class="nav-item">
-        <a class="nav-link text-white {{request()->routeIs('discount-category.*') ? 'active bg-gradient-success' : '' }}" href="/discount-category">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fas fa-tags fa-pro text-primary"></i>
-            </div>
-            <span class="nav-link-text ms-1">Discount Category</span>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link text-white {{request()->routeIs('discount.*') ? 'active bg-gradient-success' : '' }}" href="/discount">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-percent fa-pro text-secondary"></i>
@@ -93,29 +85,12 @@
             <span class="nav-link-text ms-1">Order Details</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {{request()->routeIs('delivery.*') ? 'active bg-gradient-success' : '' }}" href="/delivery">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fas fa-truck fa-pro text-info"></i>
-            </div>
-            <span class="nav-link-text ms-1">Deliveries</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {{request()->routeIs('payment.*') ? 'active bg-gradient-success' : '' }}" href="/payment">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fas fa-money-check-alt fa-pro text-danger"></i>
-            </div>
-            <span class="nav-link-text ms-1">Payments</span>
-          </a>
-        </li>
-      
         <li class="nav-item mt-3">
     <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account</h6>
 </li>
 
 
-@if(Auth::check() && Auth::user()->roles === 'owner')
+@if(Auth::check() && Auth::user()->roles === 'admin')
     <li class="nav-item">
         <a class="nav-link text-white {{ request()->routeIs('user.*') ? 'active bg-gradient-success' : '' }}" href="/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -126,7 +101,7 @@
     </li>
 @endif
 
-@if(Auth::check() && Auth::user()->roles === 'owner')
+@if(Auth::check() && Auth::user()->roles === 'admin')
     <li class="nav-item">
         <a class="nav-link text-white {{ request()->routeIs('customer.*') ? 'active bg-gradient-success' : '' }}" href="/customer">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

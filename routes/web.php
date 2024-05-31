@@ -40,7 +40,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('product', \App\Http\Controllers\Admin\ProductController::class);
     Route::resource('product-review', \App\Http\Controllers\Admin\ProductReviewController::class);
     Route::resource('wishlist', \App\Http\Controllers\Admin\WishlistController::class);
-    Route::resource('discount-category', \App\Http\Controllers\Admin\DiscountCategoryController::class);
     Route::resource('discount', \App\Http\Controllers\Admin\DiscountController::class);
     Route::resource('order', \App\Http\Controllers\Admin\OrderController::class);
     Route::resource('order-detail', \App\Http\Controllers\Admin\OrderDetailController::class);
@@ -61,7 +60,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::group(['middleware' => 'auth:customers'], function () {
     Route::get('/cart', [\App\Http\Controllers\frontend\CartController::class, 'cart'])->name('frontend.cart');
     Route::post('/add-to-cart', [\App\Http\Controllers\frontend\CartController::class, 'addCart'])->name('addCart');
-    Route::resource('checkout', \App\Http\Controllers\Frontend\CheckoutController::class);
+    Route::post('/update-cart', [\App\Http\Controllers\frontend\CartController::class, 'updateCart'])->name('updateCart');
+    Route::post('/delete-cart', [\App\Http\Controllers\frontend\CartController::class, 'deleteCart'])->name('deleteCart');
+   
+// Route discount
+    Route::post('/apply-discount', [\App\Http\Controllers\frontend\CartController::class, 'applyDiscount'])->name('applyDiscount');
+    Route::post('/remove-discount', [\App\Http\Controllers\frontend\CartController::class, 'removeDiscount'])->name('removeDiscount');
+// Route checkout
+    Route::get('/checkout', [\App\Http\Controllers\frontend\CartController::class, 'checkout'])->name('checkout');
+    Route::post('/save-customer', [\App\Http\Controllers\frontend\CartController::class, 'saveCustomer'])->name('saveCustomer');
+    Route::post('/process-checkout', [\App\Http\Controllers\frontend\CartController::class, 'processCheckout'])->name('processCheckout');
+    Route::get('/success', [\App\Http\Controllers\frontend\CartController::class, 'success'])->name('success');
     Route::resource('category', \App\Http\Controllers\Frontend\CategoryController::class);
     Route::resource('contact', \App\Http\Controllers\Frontend\ContactController::class);
     Route::resource('single-product', \App\Http\Controllers\Frontend\SingleproductController::class);

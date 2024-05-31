@@ -135,17 +135,30 @@
     $('.quantity button').on('click', function () {
         var button = $(this);
         var oldValue = button.parent().parent().find('input').val();
+        var newVal;
+        var rowId = button.data('id');
+    
         if (button.hasClass('btn-plus')) {
-            var newVal = parseFloat(oldValue) + 1;
+            newVal = parseFloat(oldValue) + 1;
         } else {
             if (oldValue > 0) {
-                var newVal = parseFloat(oldValue) - 1;
+                newVal = parseFloat(oldValue) - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
+    
+        var newQty = newVal;
+        updateCart(rowId, newQty);
+    
         button.parent().parent().find('input').val(newVal);
-    });
+    });    
+
+    function updateCart(rowId, qty) {
+        document.getElementById('rowId').value = rowId;
+        document.getElementById('qty').value = qty;
+        document.getElementById('updateCartForm').submit();
+    }
 
 })(jQuery);
 

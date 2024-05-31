@@ -41,41 +41,41 @@
 
 <div class="card mb-4">
     <div class="card-border-1 ms-3 me-3">
-    <form action="{{ route('discount.update', $discount->id) }}" method="post" id="DiscountForm" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+    <form action="{{ route('discount.update', $discounts->id) }}" method="post" id="DiscountForm" enctype="multipart/form-data">
+        @csrf 
+        @method("put")
         <div class="mb-3 ms-3 me-3">
-            <label for="category_discount_id" class="form-label">Category</label>
+            <label for="code" class="form-label">Code</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select text-white border-0" id="category_discount_id" name="category_discount_id">
-                    <option value="">Select Category</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}" class="text-dark" @if($discount->category_discount_id == $category->id) selected @endif>{{ $category->category_name }}</option>
-                    @endforeach
-                </select>
+                <input type="text" class="form-control text-white border-0" id="code" name="code"  class="text-dark" placeholder="Code" value="{{ $discounts->code ?? ''}}">
             </div>
-            @error('category_discount_id')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
         </div>
         <div class="mb-3 ms-3 me-3">
-            <label for="product_id" class="form-label">Product</label>
+            <label for="name" class="form-label">Name</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select text-white border-0" id="product_id" name="product_id">
-                    <option value="">Select Product</option>
-                    @foreach($products as $product)
-                        <option value="{{ $product->id }}" class="text-dark" @if($discount->product_id == $product->id) selected @endif>{{ $product->product_name }}</option>
-                    @endforeach
+                <input type="text" class="form-control text-white border-0" id="name" name="name" class="text-dark" placeholder="Name" value="{{ $discounts->name ?? ''}}">
+            </div>
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="type" class="form-label">Type</label>
+            <div class="border-contrast p-1 rounded"> 
+                <select class="form-select text-white border-0" id="type" name="type">
+                    <option selected value="">Select Type</option>
+                    <option value="percentage" {{ $discounts->type == 'percentage' ? 'selected' : '' }}>Percentage</option>
+                    <option value="fixed" {{ $discounts->type == 'fixed' ? 'selected' : '' }}>Fixed</option>
                 </select>
             </div>
-            @error('product_id')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="discount_amount" class="form-label">Discount Amount</label>
+            <div class="border-contrast p-1 rounded"> 
+                <input type="text" class="form-control text-white border-0" id="discount_amount" name="discount_amount"  class="text-dark" placeholder="Discount Amount" value="{{ $discounts->discount_amount ?? ''}}">
+            </div>
         </div>
         <div class="mb-3 ms-3 me-3">
             <label for="start_date" class="form-label">Start Date</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="datetime-local" class="form-control text-white border-0" id="start_date" name="start_date" value="{{ $discount->start_date }}" class="text-dark">
+                <input type="datetime-local" class="form-control text-white border-0" id="start_date" name="start_date" value="{{ $discounts->start_date ?? ''}}">
             </div>
             @error('start_date')
                 <div class="error-message">{{ $message }}</div>
@@ -84,27 +84,31 @@
         <div class="mb-3 ms-3 me-3">
             <label for="end_date" class="form-label">End Date</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="datetime-local" class="form-control text-white border-0" id="end_date" name="end_date" value="{{ $discount->end_date }}" class="text-dark">
+                <input type="datetime-local" class="form-control text-white border-0" id="end_date" name="end_date"  value="{{ $discounts->end_date ?? ''}}">
             </div>
             @error('end_date')
                 <div class="error-message">{{ $message }}</div>
             @enderror
-        </div>
-        <div class="mb-3 ms-3 me-3">
-            <label for="percentage" class="form-label">Percentage</label>
-            <div class="border-contrast p-1 rounded"> 
-                <input type="number" class="form-control text-white border-0" id="percentage" name="percentage" value="{{ $discount->percentage }}" class="text-dark">
-            </div>
             @error('percentage')
                 <div class="error-message">{{ $message }}</div>
             @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="status" class="form-label">Status</label>
+            <div class="border-contrast p-1 rounded"> 
+                <select class="form-select text-white border-0" id="status" name="status">
+                    <option selected value="">Select Status</option>
+                    <option value="1" {{ $discounts->status == '1' ? 'selected' : '' }}>Active</option>
+                    <option value="0" {{ $discounts->status == '0' ? 'selected' : '' }}>InActive</option>
+                </select>
+            </div>
         </div>
         <div class="row ms-3 me-3 justify-content-end">
             <div class="col-3">
                 <a href="{{ route('discount.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
             </div>
             <div class="col-3">
-                <button type="submit" id="save" class="btn bg-gradient-primary w-100">Update</button>
+                <button type="submit" id="save" class="btn bg-gradient-primary w-100">Create</button>
             </div>
         </div>
     </form>
@@ -149,22 +153,30 @@
     const form = document.getElementById("DiscountForm");
 
     function simpan() {
-        let category_id = document.getElementById("category_discount_id").value;
-        let product_id = document.getElementById("product_id").value;
+        let code = document.getElementById("code").value;
+        let name= document.getElementById("name").value;
+        let type= document.getElementById("type").value;
+        let discount_amount= document.getElementById("discount_amount").value;
         let start_date = document.getElementById("start_date").value;
         let end_date = document.getElementById("end_date").value;
-        let percentage = document.getElementById("percentage").value;
+        let status = document.getElementById("status").value;
 
         // Membuat array untuk menyimpan pesan kesalahan
         let errorMessages = [];
 
-                // Memeriksa input dan menambahkan pesan kesalahan ke array jika diperlukan
-                if (category_id.trim() === "") {
-            errorMessages.push("Category is required");
+        // Memeriksa input dan menambahkan pesan kesalahan ke array jika diperlukan
+                if (code.trim() === "") {
+            errorMessages.push("Code is required");
         }
 
-        if (product_id.trim() === "") {
-            errorMessages.push("Product is required");
+        if (name.trim() === "") {
+            errorMessages.push("Name is required");
+        }
+        if (type.trim() === "") {
+            errorMessages.push("Type is required");
+        }
+        if (discount_amount.trim() === "") {
+            errorMessages.push("Discount Amount is required");
         }
 
         if (start_date.trim() === "") {
@@ -175,12 +187,12 @@
             errorMessages.push("End Date is required");
         }
 
-        if (percentage.trim() === "") {
-            errorMessages.push("Percentage is required");
+        if (status.trim() === "") {
+            errorMessages.push("Status is required");
         }
 
-         // Menampilkan pesan kesalahan jika ada
-         if (errorMessages.length > 0) {
+        // Menampilkan pesan kesalahan jika ada
+        if (errorMessages.length > 0) {
             // Jika terdapat pesan kesalahan, tampilkan dalam SweetAlert2
             Swal.fire({
                 icon: 'error',

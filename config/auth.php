@@ -47,11 +47,6 @@ return [
             'hash' => false,
         ],
     
-        'customers' => [
-            'driver' => 'session',
-            'provider' => 'customers',
-        ],
-
         'users' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -82,11 +77,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-
-        'customers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Customer::class,
         ],
     ],
 

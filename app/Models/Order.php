@@ -9,7 +9,18 @@ class Order extends Model
 {
    
     protected $fillable = [
-        'customer_id', 'order_date', 'total_amount', 'status',
+        'customer_id',
+        'order_date',
+        'discount_id',
+        'discount',
+        'subtotal',
+        'total_amount',
+        'payment_method',
+        'bank_name',
+        'card_number',
+        'payment_status',
+        'status',
+        'shipping_date',
     ];
 
   

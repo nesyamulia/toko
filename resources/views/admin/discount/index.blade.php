@@ -21,11 +21,13 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">No</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Category</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Product</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Code</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Name</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Type</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Discount Amount</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Start Date</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">End Date</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Percentage</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Status</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -34,14 +36,16 @@
                                     @foreach($discounts as $index => $discount)
                                     <tr>
                                         <td class="text-center">{{ $index + 1 }}</td>
-                                        <td class="text-center">{{ $discount->categoryDiscount->category_name }}</td>
-                                        <td class="text-center">{{ $discount->product->product_name }}</td>
+                                        <td class="text-center">{{ $discount->code }}</td>
+                                        <td class="text-center">{{ $discount->name }}</td>
+                                        <td class="text-center">{{ $discount->type }}</td>
+                                        <td class="text-center">{{ $discount->discount_amount }}</td>
                                         <td class="text-center">{{ $discount->start_date }}</td>
-                                        <td class="text-center">{{ $discount->end_date }}</td>
-                                        <td class="text-center">{{ $discount->percentage }}%</td>
-                                        <td class="align-middle text-center">
+                                        <td class="text-center">{{ $discount->end_date }}</td>       
+                                        <td class="text-center">{{ $discount->status == "1" ? "Active" : "Inactive"}}</td>
+                                        <td class="alig-middle text-center">
                                             <a href="{{ route('discount.edit', $discount->id) }}" class="badge badge-sm bg-gradient-success">Edit</a>
-                                            <a href="#" onclick="event.preventDefault(); confirmDelete('{{ $discount->product->name }}', '{{ $discount->id }}')" class="badge badge-sm bg-gradient-danger">Delete</a>
+                                            <a href="#" onclick="event.preventDefault(); confirmDelete('{{ $discount->name }}', '{{ $discount->id }}')" class="badge badge-sm bg-gradient-danger">Delete</a>
 
                                             <form id="frmDelete{{ $discount->id }}" action="{{ route('discount.destroy', $discount->id) }}" method="POST" style="display: none;">
                                                 @csrf

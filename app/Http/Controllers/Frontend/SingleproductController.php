@@ -19,15 +19,15 @@ class SingleproductController extends Controller
             $product = Product::findOrFail($id);
 
             // Ambil diskon jika ada
-            $discount = Discount::where('product_id', $id)->first();
+            // $discount = Discount::where('product_id', $id)->first();
 
             // Cek apakah produk memiliki diskon dan apakah diskon masih berlaku
-            if ($discount && Carbon::now()->between($discount->start_date, $discount->end_date)) {
-                $discountedPrice = $product->price - ($product->price * $discount->percentage / 100);
-                $product->discounted_price = $discountedPrice;
-                $product->discount_category_name = optional($discount->categoryDiscount)->category_name;
-                $product->discount = $discount;
-            }
+            // if ($discount && Carbon::now()->between($discount->start_date, $discount->end_date)) {
+            //     $discountedPrice = $product->price - ($product->price * $discount->percentage / 100);
+            //     $product->discounted_price = $discountedPrice;
+            //     $product->discount_category_name = optional($discount->categoryDiscount)->category_name;
+            //     $product->discount = $discount;
+            // }
 
             $imageUrls = [];
             for ($i = 1; $i <= 5; $i++) {

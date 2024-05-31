@@ -9,6 +9,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo nersmart.png')}}" type="image/x-icon">
 
     <title>Login</title>
 
@@ -57,7 +58,7 @@
                 <div class="_lk_de">
                     <div class="form-03-main">
                         <div class="logo">
-                            <img src="{{ asset('assets/images/logo freshmart.png') }}" style="border-radius: 100%;">
+                            <img src="{{ asset('assets/images/logo nersmart.png') }}" style="border-radius: 100%;">
                         </div>
                         <form method="POST" action="{{ route('customer.login') }}">
                             @csrf

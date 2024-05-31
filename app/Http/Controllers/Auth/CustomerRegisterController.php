@@ -19,8 +19,8 @@ class CustomerRegisterController extends Controller
     {
         // Validasi input
         $request->validate([
-            'name' => 'required|string|max:255|unique:customers',
-            'email' => 'required|string|email|max:255|unique:customers',
+            'name' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
@@ -29,10 +29,6 @@ class CustomerRegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'phone' => $request->phone,
-            'address1' => $request->address1,
-            'address2' => $request->address2,
-            'address3' => $request->address3,
         ]);
         
 

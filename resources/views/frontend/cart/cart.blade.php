@@ -3,95 +3,139 @@
 @section('page', 'Cart')
 @section('header')
     @include('frontend.landingpage.header')
- <!-- Cart Page Start -->
- <div class="container-fluid py-5">
-    <div class="container py-5">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Products</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ($cartContent as $item)
-                    <tr>
-                        <th scope="row">
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset($item->options->image) }}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+    <!-- Cart Page Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Products</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Cart::count() > 0)
+                            @foreach ($cartContent as $item)
+                                <tr>
+                                    <th scope="row">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ asset($item->options->image) }}"
+                                                class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;"
+                                                alt="">
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <p class="mb-0 mt-4">{{ $item->name }}</p>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0 mt-4">Rp{{ number_format($item->price, 0, ',', '.') }}</p>
+                                    </td>
+                                    <td>
+                                        <div class="input-group quantity mt-4" style="width: 100px;">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-minus rounded-circle bg-light border"
+                                                    data-id="{{ $item->rowId }}" id="sub">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </div>
+                                            <input type="text" class="form-control form-control-sm text-center border-0"
+                                                value="{{ $item->qty }}">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-sm btn-plus rounded-circle bg-light border"
+                                                    data-id="{{ $item->rowId }}" id="add">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0 mt-4">Rp{{ number_format($item->price * $item->qty, 0, ',', '.') }}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('deleteCart') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="rowId" value="{{ $item->rowId }}">
+                                            <button type="submit" class="btn btn-md rounded-circle bg-light border mt-4">
+                                                <i class="fa fa-times text-danger"></i>
+                                            </button>
+                                        </form>
+                                        <!-- Cart Update -->
+                                        <form id="updateCartForm" method="POST" action="{{ route('updateCart') }}"
+                                            style="display: none;">
+                                            @csrf
+                                            <input type="hidden" name="rowId" id="rowId"
+                                                value="{{ $item->rowId }}">
+                                            <input type="hidden" name="qty" id="qty">
+                                        </form>
+                                        <!-- Cart Update End -->
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6" class="text-center">Cart is empty</td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+           
+            <div class="row g-4 justify-content-end">
+                <div class="col-8"></div>
+                <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                    <div class="bg-light rounded">
+                        <div class="p-4">
+                            <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
+                            <div class="d-flex justify-content-between mb-4">
+                                <p class="mb-0"></p>
                             </div>
-                        </th>
-                        <td>
-                            <p class="mb-0 mt-4">{{ $item->name }}</p>
-                        </td>
-                        <td>
-                            <p class="mb-0 mt-4">Rp{{number_format($item->price, 0, ',', '.' )}}</p>
-                        </td>
-                        <td>
-                            <div class="input-group quantity mt-4" style="width: 100px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                    <i class="fa fa-minus"></i>
-                                    </button>
+                            <!-- <div class="d-flex justify-content-between">
+                                            <h5 class="mb-0 me-4">Shipping</h5>
+                                            <div class="">
+                                                <p class="mb-0">Flat rate: Rp3.00</p>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0 text-end">Shipping to Ukraine.</p>
+                                    </div> -->
+                            @if (session('discountResponse') && session('discountResponse')['status'])
+                                @php
+                                    $discount = session('discountResponse')['discount'];
+                                    $grandTotal = session('discountResponse')['grandTotal'];
+                                @endphp
+                                <div
+                                class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                                <h5 class="mb-0 ps-4 me-4">Subtotal</h5>
+                                <p class="mb-0 pe-4">Rp {{ Cart::subtotal() }}</p>
+                            </div>
+                                <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                                    <h5 class="mb-0 ps-4 me-4">Discount</h5>
+                                    <p class="mb-0 pe-4">- Rp {{ $discount }}</p>
                                 </div>
-                                <input type="text" class="form-control form-control-sm text-center border-0" value="{{ $item->qty }}">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
+                                <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                                    <h5 class="mb-0 ps-4 me-4">Total</h5>
+                                    <p class="mb-0 pe-4">Rp {{ $grandTotal }}</p>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="mb-0 mt-4">Rp{{number_format($item->price  * $item->qty, 0, ',', '.')}}</p>
-                        </td>
-                        <td>
-                            <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                                <i class="fa fa-times text-danger"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        <div class="mt-5">
-            <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
-            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply Coupon</button>
-        </div>
-        <div class="row g-4 justify-content-end">
-            <div class="col-8"></div>
-            <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
-                <div class="bg-light rounded">
-                    <div class="p-4">
-                        <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5 class="mb-0 me-4">Subtotal:</h5>
-                            <p class="mb-0">Rp {{Cart::subtotal()}}</p>
+                            @else
+                                <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                                    <h5 class="mb-0 ps-4 me-4">Total</h5>
+                                    <p class="mb-0 pe-4">Rp {{ Cart::subtotal() }}</p>
+                                </div>
+                            @endif
+                            <a href="{{ route('checkout') }}"
+                                class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+                                type="button">Proceed Checkout</a>
                         </div>
-                        <!-- <div class="d-flex justify-content-between">
-                            <h5 class="mb-0 me-4">Shipping</h5>
-                            <div class="">
-                                <p class="mb-0">Flat rate: Rp3.00</p>
-                            </div>
-                        </div>
-                        <p class="mb-0 text-end">Shipping to Ukraine.</p>
-                    </div> -->
-                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                        <h5 class="mb-0 ps-4 me-4">Total</h5>
-                        <p class="mb-0 pe-4">Rp99.00</p>
                     </div>
-                    <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" type="button">Proceed Checkout</button>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Cart Page End -->
+        <!-- Cart Page End -->
 
-@endsection
+
+    @endsection

@@ -8,26 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Discount extends Model
 {
+    protected $table = 'discount';
     protected $fillable = [
-        'category_discount_id',
-        'product_id',
+        'code',
+        'name',
+        'type',
+        'discount_amount',
         'start_date',
         'end_date',
-        'percentage',
+        'status',
     ];
 
-    protected $casts = [
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
-    ];
-
-    public function categoryDiscount()
-    {
-        return $this->belongsTo(DiscountCategory::class, 'category_discount_id');
-    }
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class, 'product_id');
-    }
 }

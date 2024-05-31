@@ -36,7 +36,7 @@
                                         <td class="text-center">{{ $user->name }}</td>
                                         <td class="text-center">{{ $user->email}}</td>
                                         <td class="text-center">{{ $user->roles}}</td>
-                                        <td>{{$user->id == auth()->id() ? 'Active' : 'Inactive'}}</td>
+                                        <td class="text-center">{{$user->id == auth()->id() ? 'Active' : 'Inactive'}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('user.edit', $user->id) }}" class="badge badge-sm bg-gradient-success">Edit</a>
                                             <a href="#" onclick="event.preventDefault(); confirmDelete('{{ $user->name }}', '{{ $user->id }}')" class="badge badge-sm bg-gradient-danger">Delete</a>

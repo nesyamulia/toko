@@ -44,32 +44,32 @@
     <form action="{{ route('discount.store') }}" method="post" id="DiscountForm" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 ms-3 me-3">
-            <label for="category_discount_id" class="form-label">Category</label>
+            <label for="code" class="form-label">Code</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select text-white border-0" id="category_discount_id" name="category_discount_id">
-                    <option value="">Select Category</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}" class="text-dark">{{ $category->category_name }}</option>
-                    @endforeach
-                </select>
+                <input type="text" class="form-control text-white border-0" id="code" name="code"  class="text-dark" placeholder="Code">
             </div>
-            @error('category_discount_id')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
         </div>
         <div class="mb-3 ms-3 me-3">
-            <label for="product_id" class="form-label">Product</label>
+            <label for="name" class="form-label">Name</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select text-white border-0" id="product_id" name="product_id">
-                    <option value="">Select Product</option>
-                    @foreach($products as $product)
-                        <option value="{{ $product->id }}" class="text-dark">{{ $product->product_name }}</option>
-                    @endforeach
+                <input type="text" class="form-control text-white border-0" id="name" name="name" class="text-dark" placeholder="Name">
+            </div>
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="type" class="form-label">Type</label>
+            <div class="border-contrast p-1 rounded"> 
+                <select class="form-select text-white border-0" id="type" name="type">
+                    <option selected value="">Select Type</option>
+                    <option value="percentage">Percentage</option>
+                    <option value="fixed">Fixed</option>
                 </select>
             </div>
-            @error('product_id')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="discount_amount" class="form-label">Discount Amount</label>
+            <div class="border-contrast p-1 rounded"> 
+                <input type="text" class="form-control text-white border-0" id="discount_amount" name="discount_amount"  class="text-dark" placeholder="Discount Amount">
+            </div>
         </div>
         <div class="mb-3 ms-3 me-3">
             <label for="start_date" class="form-label">Start Date</label>
@@ -88,15 +88,19 @@
             @error('end_date')
                 <div class="error-message">{{ $message }}</div>
             @enderror
-        </div>
-        <div class="mb-3 ms-3 me-3">
-            <label for="percentage" class="form-label">Percentage</label>
-            <div class="border-contrast p-1 rounded"> 
-                <input type="number" class="form-control text-white border-0" id="percentage" name="percentage" value="{{ old('percentage') }}" class="text-dark">
-            </div>
             @error('percentage')
                 <div class="error-message">{{ $message }}</div>
             @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="status" class="form-label">Status</label>
+            <div class="border-contrast p-1 rounded"> 
+                <select class="form-select text-white border-0" id="status" name="status">
+                    <option selected value="">Select Status</option>
+                    <option value="1">Active</option>
+                    <option value="0">InActive</option>
+                </select>
+            </div>
         </div>
         <div class="row ms-3 me-3 justify-content-end">
             <div class="col-3">
@@ -148,22 +152,30 @@
     const form = document.getElementById("DiscountForm");
 
     function simpan() {
-        let category_id = document.getElementById("category_discount_id").value;
-        let product_id = document.getElementById("product_id").value;
+        let code = document.getElementById("code").value;
+        let name= document.getElementById("name").value;
+        let type= document.getElementById("type").value;
+        let discount_amount= document.getElementById("discount_amount").value;
         let start_date = document.getElementById("start_date").value;
         let end_date = document.getElementById("end_date").value;
-        let percentage = document.getElementById("percentage").value;
+        let status = document.getElementById("status").value;
 
         // Membuat array untuk menyimpan pesan kesalahan
         let errorMessages = [];
 
         // Memeriksa input dan menambahkan pesan kesalahan ke array jika diperlukan
-                if (category_id.trim() === "") {
-            errorMessages.push("Category is required");
+                if (code.trim() === "") {
+            errorMessages.push("Code is required");
         }
 
-        if (product_id.trim() === "") {
-            errorMessages.push("Product is required");
+        if (name.trim() === "") {
+            errorMessages.push("Name is required");
+        }
+        if (type.trim() === "") {
+            errorMessages.push("Type is required");
+        }
+        if (discount_amount.trim() === "") {
+            errorMessages.push("Discount Amount is required");
         }
 
         if (start_date.trim() === "") {
@@ -174,8 +186,8 @@
             errorMessages.push("End Date is required");
         }
 
-        if (percentage.trim() === "") {
-            errorMessages.push("Percentage is required");
+        if (status.trim() === "") {
+            errorMessages.push("Status is required");
         }
 
         // Menampilkan pesan kesalahan jika ada

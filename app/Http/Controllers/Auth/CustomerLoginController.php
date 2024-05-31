@@ -47,7 +47,7 @@ class CustomerLoginController extends Controller
         // Jika pengguna ditemukan dan password cocok
         if ($user && Hash::check($password, $user->password)) {
             // Autentikasi pengguna
-            Auth::guard('customers')->login($user);
+            Auth::guard('users')->login($user);
     
             // Redirect ke halaman yang diinginkan
             return redirect('/category');
@@ -60,7 +60,7 @@ class CustomerLoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('customers')->logout();
+        Auth::guard('users')->logout();
         return redirect('/customer/login')->with('success', 'Logout Berhasil');
     }
 }
