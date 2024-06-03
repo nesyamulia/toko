@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('discount')->nullable();
             $table->integer('subtotal');
             $table->unsignedBigInteger('total_amount');
-            $table->string('payment_method')->default('cod');
-            $table->enum('bank_name',['BCA', 'BRI', 'BSI', 'Mandiri']);
+            $table->enum('payment_method',['cod', 'transfer']);
+            $table->enum('bank_name',['BCA', 'BRI', 'BSI', 'Mandiri'])->nullable();
             $table->integer('card_number')->nullable();
             $table->enum('payment_status',['paid','not_paid'])->default('not_paid');
             $table->enum('status', ['pending', 'shipped', 'delivered','cancelled'])->default('pending');

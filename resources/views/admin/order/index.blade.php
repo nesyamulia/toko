@@ -20,10 +20,15 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">No</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Customer</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Order Number</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Name</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Order Date</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Product </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Total Amount</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Payment Method</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Payment Status</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Status</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Delivery Date</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -32,10 +37,23 @@
                                     @foreach($orders as $index => $order)
                                     <tr>
                                         <td class="text-center">{{ $index + 1 }}</td>
-                                        <td class="text-center">{{ $order->customer->name }}</td>
+                                        <td class="text-center">{{ $order->order_no }}</td>
+                                        <td class="text-center">{{ $order->first_name . ' ' . $order->last_name }}</td>
                                         <td class="text-center">{{ $order->order_date }}</td>
+                                        <td class="text-center">
+                                            <ul>
+                                                @foreach ($order->items as $item)
+                                                    <li>
+                                                        {{ $item->product->product_name }} x {{ $item->quantity }}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
                                         <td class="text-center">{{ $order->total_amount }}</td>
+                                        <td class="text-center">{{ $order->payment_method }}</td>
+                                        <td class="text-center">{{ $order->payment_status }}</td>
                                         <td class="text-center">{{ $order->status }}</td>
+                                        <td class="text-center">{{ $order->delivered_date }}</td>
                                         <td class="align-middle text-center">
                                             <a href="{{ route('order.edit', $order->id) }}" class="badge badge-sm bg-gradient-success">Edit</a>
                                             <a href="#" onclick="event.preventDefault(); confirmDelete('{{ $order->id }}')" class="badge badge-sm bg-gradient-danger">Delete</a>

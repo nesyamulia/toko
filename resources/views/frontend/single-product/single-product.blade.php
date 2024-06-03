@@ -56,13 +56,22 @@
                                     </button>
                                 </div>
                             </div>
-                            <form action="{{ route('addCart') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $product->id }}">
-                                <button class="add_to_cart btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" type="submit">
-                                <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
-                                </button>
-                            </form>
+                            <div class="d-flex gap-2">
+                                <form action="{{ route('addCart') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                    <button class="add_to_cart btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" type="submit">
+                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                    </button>
+                                </form>
+                                <form action="{{ route('addWishlist') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                    <button class="add_to_cart btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" type="submit">
+                                        <i class="fa fa-heart"></i> Add to wishlist
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12">

@@ -5,64 +5,40 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class WishlistproductController extends Controller
 {
     public function index()
-{
-    // Ambil customer yang sedang login
-    $customer = Auth::guard('customers')->user();
-
-    // Jika pelanggan tidak ada, kembalikan ke halaman login
-    if (!$customer) {
-        return redirect()->route('customer.login');
-    }
-
-    // Ambil wishlist dari pelanggan yang sedang login
-    $wishlists = $customer->wishlists;
-
-    // Inisialisasi array untuk menyimpan produk yang ada di wishlist
-    $products = [];
-
-    // Periksa apakah $wishlists null sebelum mencoba mengiterasinya
-    if (!is_null($wishlists)) {
-        // Loop melalui setiap wishlist
-        foreach ($wishlists as $wishlist) {
-            // Ambil product_id dari wishlist saat ini
-            $product_id = $wishlist->product_id;
-
-            // Cari produk yang sesuai berdasarkan product_id
-            $product = Product::where('id', $product_id)->first();
-
-            // Jika produk ditemukan, tambahkan ke dalam array produk
-            if ($product) {
-                $products[] = $product;
-            }
-        }
-    }
-
-    // Kirim data ke view frontend.wishlist-product.wishlist-product
-    return view('frontend.wishlist-product.wishlist-product', compact('products', 'customer', 'wishlists'));
-}
-
-
-    public function store(Request $request)
     {
-        // Ambil product_id dari permintaan
-        $product_id = $request->product_id;
+        $user = Auth::user();
+        $wishlistItems = Cart::instance('wishlist_' . $user->id)->content();
+       
+        return view('frontend.wishlist.wishlist', compact('wishlistItems'));
+    }
 
-        // Ambil customer_id dari pelanggan yang sedang login menggunakan guard 'customers'
-        $customer_id = Auth::guard('customers')->id();
+    public function addWishlist(Request $request) {
+        $user = Auth::user();
+        $id = $request->id;
+        $product = Product::find($id);
+        Cart::instance('wishlist_' . $user->id)->add($id, $product->product_name, 1, $product->price, ['image' => $product->image1_url]);
+        $message = '<strong>' . $product->product_name . '</strong> added to wishlist successfully.';
+        session()->flash('success', $message);
+        return redirect()->back();
+    }
 
-        // Simpan data ke dalam tabel wishlists
-        Wishlist::create([
-            'customer_id' => $customer_id,
-            'product_id' => $product_id,
-        ]);
+    public function deleteWishlist(Request $request)
+    {
+        $user = Auth::user();
+        $itemInfo = Cart:: instance('wishlist_' . $user->id)->get($request->rowId);
+        Cart:: instance('wishlist_' . $user->id)->remove($request->rowId);
 
-        // Redirect ke halaman wishlist
-        return redirect()->route('wishlist-product.index')->with('success', 'Product added to wishlist successfully');
+        $message = 'Item removed successfully.';
+        session()->flash('success', $message);
+
+        return redirect()->back();
     }
 }
+
+

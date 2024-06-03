@@ -47,4 +47,5 @@ class Product extends Model
         return $this->hasMany(Discount::class);
     }
 
+    
 }

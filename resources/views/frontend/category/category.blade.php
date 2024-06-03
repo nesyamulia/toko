@@ -72,11 +72,13 @@
                                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                                             <p class="text-dark fs-5 fw-bold mb-0">Rp{{ $product->price }} /
                                                                 500gr</p>
-                                                            <a href="#"
-                                                                class="btn border border-secondary rounded-pill px-3 text-primary">
-                                                                <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                                cart
-                                                            </a>
+                                                                <form action="{{ route('addCart') }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                                                    <button class="add_to_cart btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" type="submit">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                                    </button>
+                                                                </form>
                                                         </div>
                                                     </div>
                                                 </a>

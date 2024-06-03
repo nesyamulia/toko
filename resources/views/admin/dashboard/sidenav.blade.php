@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
       <li class="nav-item">
-          <a class="nav-link text-white {{request()->routeIs('dashboard') ? 'active bg-gradient-success' : '' }}" href="/dashboard">
+          <a class="nav-link text-white {{request()->routeIs('dashboard.*') ? 'active bg-gradient-success' : '' }}" href="/dashboard">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="fas fa-chart-line fa-pro text-primary"></i>
             </div>
@@ -75,14 +75,6 @@
             <i class="fas fa-shopping-basket fa-pro text-success"></i>
             </div>
             <span class="nav-link-text ms-1">Orders</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {{request()->routeIs('order-detail.*') ? 'active bg-gradient-success' : '' }}" href="/order-detail">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fas fa-receipt fa-pro text-warning"></i>
-            </div>
-            <span class="nav-link-text ms-1">Order Details</span>
           </a>
         </li>
         <li class="nav-item mt-3">

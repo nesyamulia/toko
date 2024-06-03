@@ -21,9 +21,10 @@ class CartController extends Controller
     public function addCart(Request $request)
     {
         $id = $request->id;
+        $user = Auth::user();
         $product = Product::find($id);
         // dd($id);
-        Cart::add($id, $product->product_name, 1, $product->price,
+        Cart::instance('cart_' . $user->id)->add($id, $product->product_name, 1, $product->price,
             ['image' => $product->image1_url]
         );
         // dd(Cart::content());
@@ -38,8 +39,13 @@ class CartController extends Controller
      */
     public function cart()
     {
-        $cartContent = Cart::content();
-        // dd($cartContent);
+        $user = Auth::user();
+        $cartContent = Cart:: instance('cart_' . $user->id)->content();
+        // if (Auth::check()) {
+        //     dd(Auth::user()->id);
+        // } else {
+        //     dd('User not authenticated');
+        // }
         return view('frontend.cart.cart', compact('cartContent'));
     }
 
@@ -48,16 +54,17 @@ class CartController extends Controller
      */
     public function updateCart(Request $request)
     {
+        $user = Auth::user();
         $rowId = $request->rowId;
         $qty = $request->qty;
 
         // dd('rowId: ' . $rowId . ' qty: ' . $qty);
 
-        $itemInfo = Cart::get($rowId);
+        $itemInfo = Cart::instance('cart_' . $user->id)->get($rowId);
         $product = Product::find($itemInfo->id);
 
         if ($qty <= $product->stok_quantity) {
-            Cart::update($rowId, $qty);
+            Cart::instance('cart_' . $user->id)->update($rowId, $qty);
             $message = 'Cart updated successfully.';
             $status = true;
             session()->flash('success', $message);
@@ -76,8 +83,9 @@ class CartController extends Controller
      */
     public function deleteCart(Request $request)
     {
-        $itemInfo = Cart::get($request->rowId);
-        Cart::remove($request->rowId);
+        $user = Auth::user();
+        $itemInfo = Cart:: instance('cart_' . $user->id)->get($request->rowId);
+        Cart:: instance('cart_' . $user->id)->remove($request->rowId);
 
         $message = 'Item removed successfully.';
         session()->flash('success', $message);
@@ -122,11 +130,12 @@ class CartController extends Controller
         }
     
         session()->put('code', $code);
-    
+        
+        $user = Auth::user();
         $couponCodeId = $code->id;
         $codeValue = $code->code;
         $discount = 0;
-        $subTotal = Cart::subtotal(0, '.', '');
+        $subTotal = Cart:: instance('cart_' . $user->id)->subtotal(0, '.', '');
     
         if ($code->type == 'percentage') {
             $discount = ($code->discount_amount / 100) * $subTotal;
@@ -158,7 +167,9 @@ class CartController extends Controller
     {
         $user = Auth::user();
         $customer = Customer::where('user_id', $user->id)->first();
-        return view('frontend.checkout.checkout', compact('customer'));
+        $cartItems = Cart::instance('cart_' . $user->id)->content();
+        
+        return view('frontend.checkout.checkout', compact('customer' , 'cartItems'));
     }
 
     public function saveCustomer(Request $request)
@@ -192,7 +203,7 @@ class CartController extends Controller
         $customer = Customer::where('user_id', $user->id)->first();
         
         // Ambil subtotal dari keranjang belanja
-        $subTotal = Cart::subtotal(0, '.', '');
+        $subTotal = Cart:: instance('cart_' . $user->id)->subtotal(0, '.', '');
         // Ambil diskon dari sesi jika ada
         $discount = session('discountResponse')['discount'] ?? 0;
         $discountId = session('code')->id ?? null;
@@ -200,7 +211,15 @@ class CartController extends Controller
         $grandTotal = session('discountResponse')['grandTotal'] ?? $subTotal;
 
         // store ke tabel orders
+
+        $lastOrder = Order::latest()->first();
+        $LastOrderNo = $lastOrder ? intval(substr($lastOrder->order_no, 5)) : 0;
+        $nextOrder = $LastOrderNo + 1;
+        $formatOrder = '#ORD-' . str_pad($nextOrder, 2, 0, STR_PAD_LEFT);
+
+
         $order = new Order;
+        $order->order_no = $formatOrder;
         $order->customer_id = $customer->id;
         $order->order_date = Carbon::now();
         $order->subtotal = $subTotal;
@@ -212,14 +231,15 @@ class CartController extends Controller
             $order->payment_status = 'paid';
             $order->bank_name = $request->bank_name;
             $order->card_number = $request->card_number;
+        } else {
+            $order->payment_status = 'not_paid';
         }
-        $order->payment_status = 'not_paid';
         $order->status = 'pending';
         $order->save();
     
     
         // store ke tabel order_details
-        $cartItems = Cart::content();
+        $cartItems = Cart:: instance('cart_' . $user->id)->content();
         foreach ($cartItems as $cartItem) {
             $orderDetail = new OrderDetail;
             $orderDetail->order_id = $order->id;
@@ -235,7 +255,7 @@ class CartController extends Controller
             $product->update();
         }
     
-        Cart::destroy();
+        Cart:: instance('cart_' . $user->id)->destroy();
     
         return redirect()->route('success')->with('success', 'Order placed successfully. Thank you for shopping with us.');
     }

@@ -45,43 +45,89 @@
         @csrf
         @method('PUT')
         <div class="mb-3 ms-3 me-3">
-            <label for="customer_id" class="form-label">Customer</label>
+            <label for="order_no" class="form-label">Order Number</label>
             <div class="border-contrast p-1 rounded"> 
-                <select class="form-select text-white border-0" id="customer_id" name="customer_id">
-                    <option value="">Select Customer</option>
-                    @foreach($customers as $customer)
-                        <option value="{{ $customer->id }}" class="text-dark" @if($order->customer_id == $customer->id) selected @endif>{{ $customer->name }}</option>
-                    @endforeach
-                </select>
+                <input type="text" class="form-control text-white bg-dark border-0" id="order_no" name="order_no" value="{{ $order->order_no }}" class="text-dark" disabled>
             </div>
-            @error('customer_id')
+            @error('order_no')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="first_name" class="form-label">Name</label>
+            <div class="border-contrast p-1 rounded"> 
+                <input type="text" class="form-control text-white bg-dark border-0" id="first_name" name="first_name" value="{{ $order->first_name . ' ' . $order->last_name }}" class="text-dark" disabled>
+            </div>
+            @error('first_name')
                 <div class="error-message">{{ $message }}</div>
             @enderror
         </div>
         <div class="mb-3 ms-3 me-3">
             <label for="order_date" class="form-label">Order Date</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="datetime-local" class="form-control text-white border-0" id="order_date" name="order_date" value="{{ $order->order_date }}" class="text-dark">
+                <input type="datetime-local" class="form-control text-white  bg-dark border-0" id="order_date" name="order_date" value="{{ $order->order_date }}" class="text-dark" disabled>
             </div>
             @error('order_date')
                 <div class="error-message">{{ $message }}</div>
             @enderror
         </div>
         <div class="mb-3 ms-3 me-3">
+            <label for="product" class="form-label">Product</label>
+            <div class="border-contrast p-1 rounded"> 
+                @foreach ($order->items as $item)
+                <input type="text" class="form-control text-white  bg-dark border-0" id="product" name="product" value=" {{ $item->product->product_name }} x {{ $item->quantity }}" class="text-dark" disabled>
+                @endforeach
+            </div>
+            @error('product')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
             <label for="total_amount" class="form-label">Total Amount</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="number" class="form-control text-white border-0" id="total_amount" name="total_amount" value="{{ $order->total_amount }}" class="text-dark">
+                <input type="number" class="form-control text-white bg-dark border-0" id="total_amount" name="total_amount" value="{{ $order->total_amount }}" class="text-dark" disabled>
             </div>
             @error('total_amount')
                 <div class="error-message">{{ $message }}</div>
             @enderror
         </div>
         <div class="mb-3 ms-3 me-3">
+            <label for="payment_method" class="form-label">Payment Method</label>
+            <div class="border-contrast p-1 rounded"> 
+                <input type="text" class="form-control text-white bg-dark border-0" id="payment_method" name="payment_method" value="{{ $order->payment_method }}" class="text-dark" disabled>
+            </div>
+            @error('payment_method')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="payment_status" class="form-label">Payment Status</label>
+            <div class="border-contrast p-1 rounded"> 
+                <input type="text" class="form-control text-white bg-dark border-0" id="payment_status" name="payment_status" value="{{ $order->payment_status }}" class="text-dark">
+            </div>
+            @error('payment_status')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
             <label for="status" class="form-label">Status</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control text-white border-0" id="status" name="status" value="{{ $order->status }}" class="text-dark">
+                <select class="form-select text-white bg-dark border-0" id="status" name="status">
+                <option selected value="default">Select Status</option> 
+                <option value="not_paid" {{ $order->payment_status == 'not_paid' ? 'selected' : '' }}>Not Paid</option> 
+                <option value="paid" {{ $order->payment_status == 'paid' ? 'selected' : '' }}>Paid</option> 
+                </select>
             </div>
             @error('status')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3 ms-3 me-3">
+            <label for="delivered_date" class="form-label">Delivery Date</label>
+            <div class="border-contrast p-1 rounded"> 
+                <input type="datetime-local" class="form-control text-white bg-dark border-0" id="delivered_date" name="delivered_date" value="{{ $order->delivered_date }}" class="text-dark">
+            </div>
+            @error('delivered_date')
                 <div class="error-message">{{ $message }}</div>
             @enderror
         </div>

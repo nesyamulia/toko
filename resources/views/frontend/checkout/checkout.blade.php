@@ -121,7 +121,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (Cart::content() as $item)
+                                    @foreach ($cartItems as $item)
                                         <tr>
 
                                             <th scope="row">
@@ -199,8 +199,7 @@
                         <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                             <div class="col-12">
                                 <div class="form-check text-start my-3">
-                                    <input type="radio" class="form-check-input bg-primary border-0" id="Transfer-1"
-                                        name="payment_method" value="transfer" onclick="toggleBankTransferInput()">
+                                    <input type="radio" class="form-check-input bg-primary border-0" id="Transfer-1" name="payment_method" value="transfer" onclick="toggleBankTransferInput()">
                                     <label class="form-check-label" for="Transfer-1">Direct Bank Transfer</label>
                                 </div>
                             </div>
@@ -224,16 +223,13 @@
                         <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                             <div class="col-12">
                                 <div class="form-check text-start my-3">
-                                    <input type="radio" class="form-check-input bg-primary border-0" id="Delivery-1"
-                                        name="payment_method" value="cod" onclick="toggleBankTransferInput()">
+                                    <input type="radio" class="form-check-input bg-primary border-0" id="Delivery-1" name="payment_method" value="cod" onclick="toggleBankTransferInput()">
                                     <label class="form-check-label" for="Delivery-1">Cash On Delivery</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                            <button type="submit"
-                                class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place
-                                Order</button>
+                            <button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary btn-order">Place Order</button>
                         </div>
                     </form>
                 </div>
@@ -257,6 +253,35 @@
         // Panggil fungsi saat halaman dimuat untuk memastikan input sesuai dengan status awal
         document.addEventListener('DOMContentLoaded', (event) => {
             toggleBankTransferInput();
+        });
+
+        document.querySelector('.btn-order').addEventListener('click', function(event) {
+            const paymentMethods = document.querySelectorAll('input[name="payment_method"]');
+            let isChecked = false;
+            let selectedMethod = null;
+
+            paymentMethods.forEach(method => {
+                if (method.checked) {
+                    isChecked = true;
+                    selectedMethod = method.value;
+                }
+            });
+
+            if (!isChecked) {
+                event.preventDefault();
+                alert('Please select a payment method before placing your order.');
+                return;
+            }
+
+            if (selectedMethod === 'transfer') {
+                const bankName = document.querySelector('select[name="bank_name"]').value;
+                const cardNumber = document.querySelector('input[name="card_number"]').value;
+
+                if (!bankName || !cardNumber) {
+                    event.preventDefault();
+                    alert('Please fill in all the required bank details.');
+                }
+            }
         });
     </script>
 @endsection

@@ -12,7 +12,13 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::latest('orders.created_at')
+            ->select('orders.*', 'customers.first_name', 'customers.last_name', 'customers.email')
+            ->leftJoin('customers', 'customers.id', 'orders.customer_id')
+            ->with('items.product')
+            ->get();
+
+
         return view('admin.order.index', compact('orders'));
     }
 
@@ -40,6 +46,7 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
+        $order = Order::select('orders.*', 'customers.first_name', 'customers.last_name', 'customers.email')->where('orders.id', $id)->leftJoin('customers', 'customers.id', 'orders.customer_id')->first();
         $customers = Customer::all();
         return view('admin.order.edit', compact('order', 'customers'));
     }
