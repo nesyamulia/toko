@@ -54,15 +54,12 @@ class OrderController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'customer_id' => 'required|exists:customers,id',
-            'order_date' => 'required|date',
-            'total_amount' => 'required|numeric',
-            'status' => 'required|string|max:20',
-        ]);
-
         $order = Order::findOrFail($id);
-        $order->update($request->all());
+        $order->status = $request->status;
+        $order->delivered_date = $request->delivered_date;
+        $order->payment_status = $request->payment_status;
+        $order->save();
+
 
         return redirect()->route('order.index')->with('success', 'Order updated successfully');
     }

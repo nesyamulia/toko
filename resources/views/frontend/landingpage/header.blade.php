@@ -32,11 +32,19 @@
                      </a>
                      <a href="/cart" class="icon-spacing position-relative me-4 my-auto">
                          <i class="fa fa-shopping-bag fa-2x"></i>
+                         @if (Auth::guard('users')->check())
                          <span
                              class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                              style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
                                 {{ Cart::instance('cart_' . Auth::guard('users')->user()->id)->count() }}
                          </span>
+                        @else
+                        <span
+                        class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                        style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
+                           0
+                    </span>
+                         @endif
                      </a>
 
                      @if (Auth::guard('users')->check())

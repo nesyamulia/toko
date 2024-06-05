@@ -103,7 +103,11 @@
         <div class="mb-3 ms-3 me-3">
             <label for="payment_status" class="form-label">Payment Status</label>
             <div class="border-contrast p-1 rounded"> 
-                <input type="text" class="form-control text-white bg-dark border-0" id="payment_status" name="payment_status" value="{{ $order->payment_status }}" class="text-dark">
+                <select class="form-select text-white bg-dark border-0" id="payment_status" name="payment_status">
+                    <option selected value="default">Select Payment Status</option> 
+                    <option value="not paid" {{ $order->payment_status == 'not paid' ? 'selected' : '' }}>Not Paid</option> 
+                    <option value="paid" {{ $order->payment_status == 'paid' ? 'selected' : '' }}>Paid</option> 
+                </select>
             </div>
             @error('payment_status')
                 <div class="error-message">{{ $message }}</div>
@@ -114,8 +118,10 @@
             <div class="border-contrast p-1 rounded"> 
                 <select class="form-select text-white bg-dark border-0" id="status" name="status">
                 <option selected value="default">Select Status</option> 
-                <option value="not_paid" {{ $order->payment_status == 'not_paid' ? 'selected' : '' }}>Not Paid</option> 
-                <option value="paid" {{ $order->payment_status == 'paid' ? 'selected' : '' }}>Paid</option> 
+                <option value="pending" {{ $order->payment_status == 'pending' ? 'selected' : '' }}>Pending</option> 
+                <option value="shipped" {{ $order->payment_status == 'shipped' ? 'selected' : '' }}>Shipped</option> 
+                <option value="delivered" {{ $order->payment_status == 'delivered' ? 'selected' : '' }}>Delivered</option> 
+                <option value="cancelled" {{ $order->payment_status == 'cancelled' ? 'selected' : '' }}>Cancelled</option> 
                 </select>
             </div>
             @error('status')
@@ -181,30 +187,22 @@
     const form = document.getElementById("OrderForm");
 
     function simpan() {
-        let customer_id = document.getElementById("customer_id").value;
-        let order_date = document.getElementById("order_date").value;
-        let total_amount = document.getElementById("total_amount").value;
-        let status = document.getElementById("status").value;
+        let ps = document.getElementById("payment_status").value;
+        let s = document.getElementById("status").value;
 
         // Membuat array untuk menyimpan pesan kesalahan
         let errorMessages = [];
 
         // Memeriksa input dan menambahkan pesan kesalahan ke array jika diperlukan
-        if (customer_id.trim() === "") {
-            errorMessages.push("Customer is required");
+        if (ps.trim() === "") {
+            errorMessages.push("Payment Status is required");
         }
 
-        if (order_date.trim() === "") {
-            errorMessages.push("Order Date is required");
-        }
-
-        if (total_amount.trim() === "") {
-            errorMessages.push("Total Amount is required");
-        }
-
-        if (status.trim() === "") {
+        if (s.trim() === "") {
             errorMessages.push("Status is required");
         }
+
+
 
         // Menampilkan pesan kesalahan jika ada
         if (errorMessages.length > 0) {

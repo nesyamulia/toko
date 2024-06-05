@@ -82,6 +82,9 @@ Route::group(['middleware' => 'auth:users'], function () {
     Route::post('/add-wishlist', [\App\Http\Controllers\Frontend\WishlistproductController::class, 'addWishlist'])->name('addWishlist');
     Route::delete('/remove-wishlist', [\App\Http\Controllers\Frontend\WishlistproductController::class, 'deleteWishlist'])->name('removeWishlist');
     Route::delete('/remove-all-wishlist', [\App\Http\Controllers\Frontend\WishlistproductController::class, 'removeAllWishlist'])->name('removeAllWishlist');
+
+    // Route account
+    Route::get('/account', [\App\Http\Controllers\Frontend\AccountController::class, 'index'])->name('account');
 });
 
 
