@@ -85,7 +85,13 @@ Route::group(['middleware' => 'auth:users'], function () {
 
     // Route account
     Route::get('/account', [\App\Http\Controllers\Frontend\AccountController::class, 'index'])->name('account');
-});
+    Route::get('/my-order', [\App\Http\Controllers\Frontend\AccountController::class, 'myOrder'])->name('myOrder');
+    Route::get('/my-address', [\App\Http\Controllers\Frontend\AccountController::class, 'myAddress'])->name('myAddress');
+    Route::post('/update-address', [\App\Http\Controllers\Frontend\AccountController::class, 'updateAddress'])->name('updateAddress');
+    Route::post('/update-account', [\App\Http\Controllers\Frontend\AccountController::class, 'updateAccount'])->name('updateAccount');
+    Route::get('my-order-detail/{id}', [\App\Http\Controllers\Frontend\AccountController::class, 'myOrderDetail'])->name('myOrderDetail');
+}); 
+
 
 
 Route::resource('/', \App\Http\Controllers\Frontend\LandingpageController::class);

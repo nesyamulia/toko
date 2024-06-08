@@ -288,12 +288,12 @@
             // Jika tidak ada pesan kesalahan, tampilkan pesan konfirmasi
             Swal.fire({
                 title: 'Are you sure?',
-                text: 'Do you want to create this product?',
+                text: 'Do you want to update this product?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, create it!'
+                confirmButtonText: 'Yes, update it!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Jika pengguna mengklik 'Yes', submit form untuk membuat produk

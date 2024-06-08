@@ -45,15 +45,6 @@
             <span class="nav-link-text ms-1">Product Reviews</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white {{request()->routeIs('wishlist.*') ? 'active bg-gradient-success' : '' }}" href="/wishlist">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fas fa-heart fa-pro text-danger"></i>
-            </div>
-            <span class="nav-link-text ms-1">Wishlist</span>
-          </a>
-        </li>
-
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Discount</h6>
         </li>

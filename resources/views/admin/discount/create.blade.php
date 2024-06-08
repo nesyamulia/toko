@@ -60,8 +60,8 @@
             <div class="border-contrast p-1 rounded"> 
                 <select class="form-select text-white border-0" id="type" name="type">
                     <option selected value="">Select Type</option>
-                    <option value="percentage">Percentage</option>
-                    <option value="fixed">Fixed</option>
+                    <option value="percentage" class="text-dark">Percentage</option>
+                    <option value="fixed" class="text-dark">Fixed</option>
                 </select>
             </div>
         </div>
@@ -97,8 +97,8 @@
             <div class="border-contrast p-1 rounded"> 
                 <select class="form-select text-white border-0" id="status" name="status">
                     <option selected value="">Select Status</option>
-                    <option value="1">Active</option>
-                    <option value="0">InActive</option>
+                    <option value="1" class="text-dark">Active</option>
+                    <option value="0" class="text-dark">InActive</option>
                 </select>
             </div>
         </div>

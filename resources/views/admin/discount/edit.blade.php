@@ -203,7 +203,7 @@
             // Jika tidak ada pesan kesalahan, tampilkan pesan konfirmasi
             Swal.fire({
                 title: 'Are you sure?',
-                text: 'Do you want to create this product review?',
+                text: 'Do you want to update this product review?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

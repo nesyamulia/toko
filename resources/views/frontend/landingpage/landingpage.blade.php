@@ -182,7 +182,7 @@
         <!-- Fruits Shop End-->
 
 
-        <!-- Featurs Start -->
+        {{-- <!-- Featurs Start -->
         <div class="container-fluid service py-5">
             <div class="container py-5">
                 <div class="row g-4 justify-content-center">
@@ -202,7 +202,7 @@
                     <div class="col-md-6 col-lg-4">
                         <a href="#">
                             <div class="service-item bg-dark rounded border border-dark">
-                                <img src="img/anggur3.jpg" class="img-fluid rounded-top w-100" alt="">
+                                <img src="C:\diskc\Documents\Nesya Mulia\XII SIJA\SAAS\lsp\nesya1\toko\public\img\anggur3.png" class="img-fluid rounded-top w-100" alt="">
                                 <div class="px-4 rounded-bottom">
                                     <div class="service-content bg-light text-center p-4 rounded">
                                         <h5 class="text-primary">Tasty Fruits</h5>
@@ -228,7 +228,7 @@
                 </div>
             </div>
         </div>
-        <!-- Featurs End -->
+        <!-- Featurs End --> --}}
 
         <!-- Tastimonial Start -->
         <div class="container-fluid testimonial py-5">

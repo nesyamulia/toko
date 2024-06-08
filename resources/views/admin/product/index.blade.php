@@ -53,9 +53,9 @@
 
                                         <td class="text-center">{{ $product->price }}</td>
                                         <td class="text-center">{{ $product->stok_quantity }}</td>
-                                        <td>
-                                  <img src="{{ asset($product->image1_url) }}" alt="{{ $product->product_name }}" style="max-width: 100px;">
-                                </td>
+                                        <td >
+                                          <img src="{{ asset($product->image1_url) }}" alt="{{ $product->product_name }}" style="max-width: 100px;">
+                                        </td>
 
                                 <td>
                                   <img src="{{ asset($product->image2_url) }}" alt="{{ $product->product_name }}" style="max-width: 100px;">
@@ -83,6 +83,18 @@
                                             </form>
                                         </td>
                                     </tr>
+                                     {{-- Modal Foto1
+                                     <div class="modal fade" id="image1_url_{{ $product->id }}" tabindex="-1"
+                                        aria-labelledby="image1_url{{ $product->id }}label" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <img src="{{ $product->image1_url }}" alt="{{ $product->product_name }}"
+                                                        class="w-100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> --}}
                                     @endforeach
                                 </tbody>
                             </table>

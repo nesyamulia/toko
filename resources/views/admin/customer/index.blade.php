@@ -21,13 +21,15 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">No</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Name</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">First Name</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Last Name</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Email</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Password</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Phone</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Address1</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Address2</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Address3</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Phone Number</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Address</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">City</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">State</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Zip Code</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Notes</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                     </tr>
                                 </thead>
@@ -36,13 +38,15 @@
                                     @foreach($customers as $index => $customer)
                                     <tr>
                                         <td class="text-center">{{ $index + 1 }}</td>
-                                        <td class="text-center">{{ $customer->name }}</td>
+                                        <td class="text-center">{{ $customer->first_name }}</td>
+                                        <td class="text-center">{{ $customer->last_name }}</td>
                                         <td class="text-center">{{ $customer->email }}</td>
-                                        <td class="text-center">{{ $customer->password }}</td>
-                                        <td class="text-center">{{ $customer->phone }}</td>
-                                        <td class="text-center">{{ $customer->address1 }}</td>
-                                        <td class="text-center">{{ $customer->address2 }}</td>
-                                        <td class="text-center">{{ $customer->address3 }}</td>
+                                        <td class="text-center">{{ $customer->phone_number }}</td>
+                                        <td class="text-center">{{ $customer->address }}</td>
+                                        <td class="text-center">{{ $customer->city }}</td>
+                                        <td class="text-center">{{ $customer->state }}</td>
+                                        <td class="text-center">{{ $customer->zip }}</td>
+                                        <td class="text-center">{{ $customer->order_notes }}</td>
                                         <td class="align-middle text-center text-sm">
                                             <a href="{{ route('customer.edit', $customer->id) }}" class="badge badge-sm bg-gradient-success">Edit</a>
                                             <a href="#" onclick="event.preventDefault(); confirmDelete('{{ $customer->name }}', '{{ $customer->id }}')" class="badge badge-sm bg-gradient-danger">Delete</a>
